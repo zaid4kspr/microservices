@@ -7,3 +7,10 @@ services:
     restart: always 
     volumes:
      - ./service-config # modified here to take into account the new app path
+  service-register:
+    build: service-register
+    ports:
+     - "8761:8761"
+    restart: always 
+    volumes:
+     - ./service-register # modified here to take into account the new app path
