@@ -3,14 +3,95 @@ services:
   service-config:
     build: service-config
     ports:
-     - "8888:8888"
-    restart: always 
+      - "8888:8888"
+    restart: always
     volumes:
-     - ./service-config # modified here to take into account the new app path
+      - ./service-config 
+    healthcheck:
+      test: "curl --fail --silent localhost:8888/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
   service-register:
     build: service-register
     ports:
-     - "8761:8761"
-    restart: always 
+      - "8761:8761"
     volumes:
-     - ./service-register # modified here to take into account the new app path
+      - ./service-register 
+    depends_on:
+      service-config:
+        condition: service_healthy
+    links:
+      - service-config
+    restart: always
+    healthcheck:
+      test: "curl --fail --silent localhost:8761/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+  service-etudiants:
+    build: service-etudiants
+    ports:
+      - "8085:8085"
+    volumes:
+      - ./service-etudiants 
+    depends_on:
+      service-config:
+        condition: service_healthy
+      service-register:
+        condition: service_healthy  
+    links:
+      - service-config
+    restart: always 
+
+  service-enseignant:
+    build: service-enseignant
+    ports:
+      - "8084:8084"
+    volumes:
+      - ./service-enseignant
+    depends_on:
+      service-config:
+        condition: service_healthy
+      service-register:
+        condition: service_healthy  
+    links:
+      - service-config
+    restart: always
+  service-admins:
+    build: service-admins
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./service-admins
+    depends_on:
+      service-config:
+        condition: service_healthy
+      service-register:
+        condition: service_healthy  
+    links:
+      - service-config
+    restart: always
+
+  service-proxy:
+    build: service-proxy
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./service-proxy
+    depends_on:
+      service-config:
+        condition: service_healthy
+      service-register:
+        condition: service_healthy  
+    links:
+      - service-config
+      - service-register
+      - service-etudiants
+      - service-enseignant
+      - service-admins
+    restart: always    
