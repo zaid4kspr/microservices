@@ -1,0 +1,7 @@
+package com.projectIF5.serviceetudiants.dao;
+
+
+
+public interface EtudiantRepository extends JpaRepository<Etudiant,Long> {
+
+}

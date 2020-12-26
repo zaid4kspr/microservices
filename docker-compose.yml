@@ -1,0 +1,9 @@
+version: "3"
+services:
+  service-config:
+    build: service-config
+    ports:
+     - "8888:8888"
+    restart: always 
+    volumes:
+     - ./service-config # modified here to take into account the new app path

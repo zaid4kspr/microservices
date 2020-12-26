@@ -1,0 +1,8 @@
+1608854298136	Rename type 'ServiceEtudiantsApplication'
+1608854301070	Rename type 'ServiceEtudiantsApplicationTests'
+1608933384084	Rename package 'com.projectIF5.serviceetudiants'
+1608933402016	Rename package 'com.projectIF5.serviceetudiants.dao'
+1608933420031	Rename type 'EtudiantRepository'
+1608933465905	Rename type 'Etudiant'
+1608933918132	Rename package 'com.projectIF5.serviceetudiants.entities'
+1608933954154	Delete element

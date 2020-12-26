@@ -1,0 +1,14 @@
+package com.projectIF5.serviceetudiants.entities;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Etudiant {
+	@Id
+	private Long id;
+	private String firstName;
+	private String lastName;
+
+	
+	
+}

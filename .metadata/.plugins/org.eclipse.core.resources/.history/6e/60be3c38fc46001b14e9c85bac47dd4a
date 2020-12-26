@@ -1,0 +1,13 @@
+package com.projectIF5.serviceadmins.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+import com.projectIF5.serviceetudiants.entities.Etudiant;
+
+@RepositoryRestResource
+public interface AdminRepository extends JpaRepository<Etudiant,Long> {
+
+}

@@ -1,0 +1,5 @@
+package com.IF5config.controllers;
+
+public class EnseignantController {
+
+}

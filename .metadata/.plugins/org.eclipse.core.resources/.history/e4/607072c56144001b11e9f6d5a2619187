@@ -1,0 +1,34 @@
+package com.projectIF5.serviceetudiants;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import com.projectIF5.serviceetudiants.dao.EtudiantRepository;
+import com.sun.el.stream.Stream;
+
+@SpringBootApplication
+public class ServiceEtudiantsApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ServiceEtudiantsApplication.class, args);
+	}
+
+	
+	@Bean
+	CommandLineRunner start(EtudiantRepository etudiantRepoitory) {
+		return args -> {
+			
+			String ar [] = new Array()
+			
+			for (int i = 0; i < args.length; i++) {
+				
+			}
+			
+			Stream.of("A","B","C").forEach(c->{
+				
+			});
+		};
+	}
+}

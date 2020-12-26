@@ -1,0 +1,13 @@
+package com.projectIF5.serviceetudiants.entities;
+
+
+
+public class Etudiant {
+
+	private Long id;
+	private String firstName;
+	private String lastName;
+
+	
+	
+}
