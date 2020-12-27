@@ -1,0 +1,466 @@
+<div class="layout-px-spacing">
+    <div class="row layout-spacing layout-top-spacing" id="cancel-row">
+        <div class="col-lg-12">
+            <div class="widget-content searchable-container list">
+
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 filtered-list-search layout-spacing align-self-center">
+                        <form class="form-inline my-2 my-lg-0">
+                            <div class="d-flex">
+                                <div class="form-group mr-lg-3">
+                                    <input type="text" class="form-control product-search" id="input-search" (keyup)="onKeyName($event)" placeholder="Search by name...">
+                                </div>
+                                <div class="form-group mr-lg-3">
+                                    <input type="text" class="form-control product-search" id="input-search" (keyup)="onKeyEmail($event)" placeholder="Search by email...">
+                                </div>
+                                <div class="ml-md-2 mt-md-0 mt-3 col-md-4 px-0" *ngIf="filterBody.group == 'User'">
+                                    <ng-select (change)="selectClient($event)" placeholder="select business" [items]="businesses" bindLabel="nomCommercial" bindValue="_id" class="custom">
+                                        <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                                            <h6 class="mb-0" [ngOptionHighlight]="search">{{item.nomCommercial}}</h6>
+                                        </ng-template>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-12 text-sm-right text-center layout-spacing align-self-center">
+
+
+
+
+
+                        <div class="d-flex justify-content-sm-end justify-content-center" id="openModal">
+                            <div class="col-md-9 text-center">
+
+                                <div *ngIf="successMsg" class="alert alert-success" role="alert">
+                                    {{successMsg}}
+                                </div>
+                                <div *ngIf="errorPMsg" class="alert alert-warning" role="alert">
+                                    {{errorPMsg}}
+                                </div>
+                            </div>
+
+                            <svg (click)="addUser()" id="btn-add-contact" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="8.5" cy="7" r="4"></circle>
+                                <line x1="20" y1="8" x2="20" y2="14"></line>
+                                <line x1="23" y1="11" x2="17" y2="11"></line>
+                            </svg>
+                            <div class="dropdown  custom-dropdown-icon">
+                                <a class="dropdown-toggle btn" href="#" role="button" id="customDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                    <span>
+                                        {{ this.filterBody.group}}
+                                    </span>
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="customDropdown">
+                                    <a (click)="pickGroup('User')" class="dropdown-item">User</a>
+                                    <a (click)="pickGroup('Admin')" class="dropdown-item">Admin</a>
+                                    <a (click)="pickGroup('Driver')" class="dropdown-item">Driver</a>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <!-- Modal edit -->
+                        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="addContactModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <i class="flaticon-cancel-12 close" data-dismiss="modal"></i>
+                                        <div class="add-contact-box">
+                                            <div class="add-contact-content">
+                                                <form id="addContactModalTitle" [formGroup]="editUserForm">
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <input [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" type="text" formControlName="firstName" id="c-name" class="form-control" placeholder="{{'GENERAL.FIRST_NAME'| translate}}">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger" *ngIf="f.firstName.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <input [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" type="text" formControlName="lastName" id="c-name" class="form-control" placeholder="{{'GENERAL.LAST_NAME'| translate}}">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger" *ngIf="f.lastName.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <input [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="text" formControlName="email" id="c-name" class="form-control" placeholder="{{'GENERAL.EMAIL'| translate}}">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger" *ngIf=" f.email.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                                <small class="text-danger" *ngIf=" f.email.hasError('pattern')">
+                                                                    Ce format de champ est incorrect
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <select class="form-control  " [ngClass]="{ 'is-invalid': submitted && f.status.errors }" formControlName="status">
+                                                                    <option selected="selected" disabled value="">
+                                                                        {{'USERS.TABLE.STATUS'| translate}}
+                                                                    </option>
+                                                                    <option value=1>active</option>
+                                                                    <option value=2>inactive</option>
+                                                                </select>
+                                                                <small class="text-danger" *ngIf="f.status.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <!-- <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <select class="form-control  "
+                                                                    [ngClass]="{ 'is-invalid': submitted && f.sexe.errors }"
+                                                                    formControlName="sexe">
+                                                                    <option selected="selected" disabled value="">
+                                                                        Sexe
+                                                                    </option>
+                                                                    <option value=1>Male</option>
+                                                                    <option value=2>Female</option>
+                                                                </select>
+                                                            </div>
+                                                        </div> -->
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <!-- <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <select class="form-control  "
+                                                                    (change)="groupChangedInEditForm($event.target.value)"
+                                                                    [ngClass]="{ 'is-invalid': submitted && f.group.errors }"
+                                                                    formControlName="group">
+                                                                    <option selected="selected" disabled value="">
+
+                                                                        {{'GROUPS.TITLE'| translate}}</option>
+                                                                    <option [value]="item._id"
+                                                                        *ngFor="let item of SubGroups">
+                                                                        {{item?.name}}
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div> -->
+
+
+                                                    </div>
+                                                    <div class="row mt-3" *ngIf="filterBody.group == 'User'">
+                                                        <div class="col">
+                                                            <ng-select formControlName="business" placeholder="{{'USERS.MODAL.SELECT_BUSINESS'| translate}}" [items]="businesses" bindLabel="nomCommercial" bindValue="_id">
+
+
+                                                                <ng-template ng-option-tmp let-item="item" let-index="index" class="text-left" let-search="searchTerm">
+                                                                    <div class="text-left">
+                                                                        {{item.nomCommercial}}
+                                                                    </div>
+
+                                                                </ng-template>
+
+
+                                                            </ng-select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-12 text-left">
+                                                            <div class="contact-name">
+                                                                <input [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" pattern="[0-9 ]{8}" type="text" formControlName="tel" id="c-name" class="form-control" placeholder="Tel">
+                                                                <span class="validation-text"></span>
+
+                                                                <small class="text-danger" *ngIf="f.tel.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                                <small class="text-danger" *ngIf="f.tel.hasError('pattern')">
+
+                                                                    Ce champ est numerique de longueur 8
+
+                                                                </small>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-4" *ngIf="filterBody.group == 'User' || filterBody.group == 'Driver' ">
+                                                        <div class="col text-center d-flex justify-content-around">
+                                                            Services
+                                                            <div class="n-chk">
+                                                                <label class="new-control new-checkbox checkbox-outline-info new-checkbox-text">
+                                                                    <input [checked]="checkIfServiceExist4Edit(1)" (change)="onCheckChange4update($event)" value=1 type="checkbox" class="new-control-input">
+                                                                    <span class="new-control-indicator"></span><span class="new-chk-content">Conciergerie</span>
+                                                                </label> <label class="new-control new-checkbox checkbox-outline-info new-checkbox-text">
+                                                                    <input [checked]="checkIfServiceExist4Edit(2)" (change)="onCheckChange4update($event)" value=2 type="checkbox" class="new-control-input">
+                                                                    <span class="new-control-indicator"></span><span class="new-chk-content">Livraison</span>
+                                                                </label> <label class="new-control new-checkbox checkbox-outline-info new-checkbox-text">
+                                                                    <input [checked]="checkIfServiceExist4Edit(3)" (change)="onCheckChange4update($event)" value=3 type="checkbox" class="new-control-input">
+                                                                    <span class="new-control-indicator"></span><span class="new-chk-content">Livraison Express</span>
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mt-3" *ngIf="filterBody.group == 'Admin'">
+                                                        <div class="col">
+                                                            <ng-select formControlName="regions" placeholder="Choisir les regions" [items]="gouvernorats" [multiple]="true" [closeOnSelect]="false" bindLabel="division" class="text-left">
+
+
+
+                                                                <ng-template class="text-left" ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                                                                    <input id="item-{{index}}" type="checkbox" [checked]="item$.selected" />
+                                                                    {{item.division | uppercase}}
+                                                                </ng-template>
+                                                                <ng-template class="text-left" ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                                                                    <input id="item-{{index}}" type="checkbox" [checked]="item$.selected" /> {{item.division}}
+                                                                </ng-template>
+
+
+
+                                                            </ng-select>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+
+
+                                        <button class="btn" id="closeModal" data-dismiss="modal"> <i class="flaticon-delete-1"></i>
+                                            Discard</button>
+
+                                        <button id="btn-add" class="btn" (click)="updateUserInfo()">
+
+                                            Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--  addModal -->
+                        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addContactModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <i class="flaticon-cancel-12 close" data-dismiss="modal"></i>
+                                        <div class="add-contact-box">
+                                            <div class="add-contact-content">
+                                                <div *ngIf="errorPMsg" class="alert alert-warning text-left" role="alert">
+                                                    {{errorPMsg}}
+                                                </div>
+                                                <form id="addContactModalTitle" [formGroup]="addUserForm">
+
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <input [ngClass]="{ 'is-invalid': submittedAdd && e.email.errors }" type="text" formControlName="email" id="c-name" class="form-control" placeholder="{{'GENERAL.EMAIL' | translate}}">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger" *ngIf="submittedAdd&& e.email.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                                <small class="text-danger" *ngIf="submittedAdd&& f.email.hasError('pattern')">
+                                                                    Ce format de champ est incorrect
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <select class="form-control  " (change)="valueOfGroupChanged($event)" [ngClass]="{ 'is-invalid': submittedAdd && e.group.errors }" formControlName="group">
+                                                                    <option selected="selected" disabled value="">
+
+                                                                        {{'GROUPS.TITLE' | translate}}
+                                                                    </option>
+                                                                    <option value="Admin">Admin</option>
+                                                                    <option value="User">User</option>
+                                                                    <option value="Driver">Driver</option>
+
+
+                                                                </select>
+                                                                <small class="text-danger" *ngIf="submittedAdd&& e.group.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row ">
+                                                        <div class="col-md-12 text-left">
+                                                            <div class="contact-name">
+                                                                <input pattern="[0-9 ]{8}" [ngClass]="{ 'is-invalid': submittedAdd && e.tel.errors }" type="number" formControlName="tel" id="c-name" class="form-control" placeholder="Tel">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger" *ngIf="submittedAdd && e.tel.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                                <small class="text-danger" *ngIf="submittedAdd && e.tel.hasError('pattern')">
+
+                                                                    Ce champ est numerique de longueur 8
+
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-3" *ngIf="e.group.value=='User'">
+                                                        <div class="col">
+                                                            <ng-select formControlName="business" placeholder="{{'USERS.MODAL.SELECT_BUSINESS'| translate}}" [items]="businesses" bindLabel="nomCommercial" bindValue="_id">
+
+
+                                                                <ng-template ng-option-tmp let-item="item" let-index="index" class="text-left" let-search="searchTerm">
+                                                                    <div class="text-left">
+                                                                        {{item.nomCommercial}}
+                                                                    </div>
+
+                                                                </ng-template>
+
+                                                            </ng-select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row mt-4" *ngIf="e.group.value=='User'||e.group.value=='Driver' ">
+                                                        <div class="col text-center d-flex justify-content-around">
+                                                            Services
+                                                            <div class="n-chk">
+                                                                <label class="new-control new-checkbox checkbox-outline-info new-checkbox-text">
+                                                                    <input [checked]="checkIfServiceExist(1)" (change)="onCheckChange($event)" value=1 type="checkbox" class="new-control-input">
+                                                                    <span class="new-control-indicator"></span><span class="new-chk-content">Conciergerie</span>
+                                                                </label> <label class="new-control new-checkbox checkbox-outline-info new-checkbox-text">
+                                                                    <input [checked]="checkIfServiceExist(2)" (change)="onCheckChange($event)" value=2 type="checkbox" class="new-control-input">
+                                                                    <span class="new-control-indicator"></span><span class="new-chk-content">Livraison</span>
+                                                                </label> <label class="new-control new-checkbox checkbox-outline-info new-checkbox-text">
+                                                                    <input [checked]="checkIfServiceExist(3)" (change)="onCheckChange($event)" value=3 type="checkbox" class="new-control-input">
+                                                                    <span class="new-control-indicator"></span><span class="new-chk-content">Livraison Express</span>
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+
+
+                                        <button class="btn" id="closeModal" data-dismiss="modal"> <i class="flaticon-delete-1"></i>
+                                            Discard</button>
+
+                                        <button id="btn-add" class="btn" (click)="sendEmailInvitation()">
+
+                                            Save</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="searchable-items list">
+                    <div class="items items-header-section">
+                        <div class="item-content ">
+                            <div class="col">
+                                <h4>
+                                    {{'USERS.TITLE' | translate }}
+
+                                </h4>
+                            </div>
+
+                            <div class="user-location col">
+                                <h4> {{'GENERAL.EMAIL' | translate }} </h4>
+                            </div>
+
+                            <div class="user-email col">
+                                <h4> {{'USERS.TABLE.BUSINESS' | translate }} </h4>
+                            </div>
+
+                            <div class="user-phone col">
+                                <h4> {{'GROUPS.TITLE' | translate }}</h4>
+                            </div>
+
+                            <div class="user-phone col">
+                                <h4> {{'USERS.TABLE.STATUS' | translate }}</h4>
+                            </div>
+
+                            <div class="action-btn col-1">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="items" *ngFor="let item of users | paginate: { 
+                    itemsPerPage: 10,
+                    currentPage: p,
+                    totalItems: total }">
+                        <div class="item-content">
+                            <div class="user-profile col">
+
+                                <div class="user-meta-info">
+                                    <p class="usr-location my-1 ml-2">{{item?.name}}</p>
+
+                                </div>
+                            </div>
+                            <div class="user-email col">
+
+                                <p class="usr-email-addr">{{item?.email}}</p>
+                            </div>
+                            <div class="user-location col">
+
+                                <p class="usr-location ">{{item?.business?.nomCommercial}}</p>
+                            </div>
+                            <div class="user-phone col">
+                                <p class=" ">{{filterBody.group}}s </p>
+                            </div>
+                            <div class="user-phone col">
+                                <div class="shadow-none badge badge-primary" *ngIf="item.status==1">Active</div>
+                                <div class="shadow-none badge badge-warning" *ngIf="item.status==2">Inactive</div>
+                            </div>
+                            <div class="action-btn col-1 text-center" (click)="openEditModal(item)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit">
+                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                </svg>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col my-4 text-center">
+                            <pagination-controls autoHide="true" (pageChange)="changePage($event)" responsive="true">
+                            </pagination-controls>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

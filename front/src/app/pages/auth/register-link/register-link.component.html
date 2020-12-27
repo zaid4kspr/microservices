@@ -1,0 +1,54 @@
+<div class="form-container">
+    <div class="form-form">
+        <div class="form-form-wrap">
+            <div class="form-container mt-5">
+                <div class="form-content">
+
+                    <h1 class="">Créer un compte</h1>
+                    <p class="signup-link">Already have an account? <a [routerLink]="[ '/auth/login' ]">Log in</a></p>
+                    <p class="signup-link text-danger" *ngIf="ErrorMsg">
+                        {{ErrorMsg}}
+                    </p>
+                    <form *ngIf="!ErrorMsg" class="text-left" [formGroup]="registerForm">
+                        <div class="form">
+                            <div id="email-field" class="field-wrapper input ">
+                                <input disabled [ngClass]="{ 'is-invalid': submitted && f.email.errors }" id="email"
+                                    formControlName="email" type="text" placeholder="Email">
+                            </div>
+                            <div id="username-field" class="field-wrapper input">
+                                <input [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" id="firstName"
+                                    formControlName="firstName" name="firstName" type="text" class="form-control"
+                                    placeholder="First Name">
+                            </div>
+                            <div id="username-field" class="field-wrapper input">
+                                <input [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" id="lastName"
+                                    formControlName="lastName" name="lastName" type="text" class="form-control"
+                                    placeholder="Last Name">
+                            </div>
+
+                            <div id="password-field" class="field-wrapper input mb-2">
+                                <input [ngClass]="{ 'is-invalid': submitted && f.password.errors }" id="password"
+                                    name="password" formControlName="password" type="password" value=""
+                                    placeholder="Password">
+                            </div>
+
+                            <div class="d-sm-flex justify-content-between">
+
+                                <div class="field-wrapper">
+                                    <button type="submit" (click)="register()" class="btn btn-primary" value="">Get
+                                        Started!</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-image">
+        <div class="l-image">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+<div class="sidebar-wrapper sidebar-theme">
+
+    <nav id="sidebar">
+        <div class="shadow-bottom"></div>
+
+        <ul *ngIf="authService.credentials" class="list-unstyled menu-categories" id="accordionExample">
+
+            <li *ngIf="authService.credentials.user.userType=='Admin'&&0" class="menu">
+                <a [routerLink]="[ '/groups' ]" [attr.data-active]="router.url.includes('groups')" class="dropdown-toggle">
+                    <div class="">
+
+                        <span>{{'GROUPS.TITLE' | translate }}</span>
+                    </div>
+                </a>
+            </li>
+
+
+            <li class="menu" *ngIf="authService.credentials.user.userType=='Admin'&&0">
+                <a [routerLink]="[ '/permissions' ]" [attr.data-active]="router.url.includes('permissions')" class="dropdown-toggle">
+                    <div class="">
+                        <span>{{'PERMISSIONS.TITLE' | translate }}</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="menu" *ngIf="authService.credentials.user.userType=='User'">
+                <a [routerLink]="[ '/business' ]" data-active="true" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                    <div class="">
+
+                        <span>
+                            {{'SIDENAV.BUSINESS' | translate}}
+
+                        </span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="submenu list-unstyled collapse show" id="starter-kit" data-parent="#accordionExample">
+                    <li *ngIf="authService.credentials.user.services.includes('1')" [ngClass]="{'active': router.url=='/business/conciergerie'}">
+                        <a [routerLink]="[ '/business/conciergerie' ]">
+
+                            {{'SIDENAV.CONCIERGERIE' | translate}}
+
+                        </a>
+                    </li>
+                    <li *ngIf="authService.credentials.user.services.includes('1')" [ngClass]="{'active': router.url.includes('conciergerie/historique')}">
+                        <a [routerLink]="[ '/business/conciergerie/historique' ]">
+
+                            Historique {{'SIDENAV.CONCIERGERIE' | translate}}
+
+                        </a>
+                    </li>
+                    <li *ngIf="authService.credentials.user.services.includes('2')" [ngClass]="{'active': router.url.includes('business/livraison')}">
+                        <a [routerLink]="[ '/business/livraison' ]">
+                            {{'SIDENAV.DELIVERY' | translate}}
+                        </a>
+                    </li>
+                    <li *ngIf="authService.credentials.user.services.includes('3')" [ngClass]="{'active': router.url.includes('business/express')}">
+                        <a [routerLink]="[ '/business/express' ]">
+
+                            {{'SIDENAV.EXPRESS_DELIVERY' | translate }}
+
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu" *ngIf="authService.credentials.user.userType!='User'">
+                <a href="#adminDelivery" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <span> {{'SIDENAV.DELIVERY' | translate}}</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse show submenu list-unstyled" id="adminDelivery" data-parent="#accordionExample">
+                    <li [ngClass]="{'active': router.url.includes=='/livraison'}">
+                        <a [routerLink]="[ '/livraison' ]"> Manager</a>
+                    </li>
+                    <li [ngClass]="{'active': router.url.includes('livraison/acceptedByDate')}">
+                        <a [routerLink]="[ '/livraison/acceptedByDate' ]"> Historique d'affectation des chauffeurs </a>
+                    </li>
+                    <li [ngClass]="{'active': router.url.includes('unsuccessfulDelivery')}">
+                        <a [routerLink]="[ '/unsuccessfulDelivery' ]"> {{'SIDENAV.FAILED_DELIVERY' | translate}} </a>
+                    </li>
+                    <li [ngClass]="{'active': router.url.includes('stats')}">
+                        <a [routerLink]="[ '/livraison/stats' ]"> Statistiques par date</a>
+                    </li>
+                    <li [ngClass]="{'active': router.url.includes('livraison/etatJournal')}">
+                        <a [routerLink]="[ '/livraison/etatJournal' ]"> Etat Journal </a>
+                    </li>
+                    <!--
+                    <li [ngClass]="{'active': router.url.includes('fromMap/dropOff')}">
+                        <a [routerLink]="[ '/manageDelivery/fromMap/dropOff' ]"> Livraison - map</a>
+                    </li>
+                    -->
+                    <!--
+                    <li [ngClass]="{'active': router.url.includes('packagingSlip')}">
+                        <a [routerLink]="[ '/packagingSlip' ]"> {{'SIDENAV.REQUESTS' | translate}} </a>
+                    </li>
+                    -->
+                </ul>
+            </li>
+            <li class="menu" *ngIf="authService.credentials.user.userType!='User'">
+                <a href="#submenuPick" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <span> Pickups</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse show submenu list-unstyled" id="submenuPick" data-parent="#accordionExample">
+                    <li [ngClass]="{'active': router.url.includes('pickups')}">
+                        <a [routerLink]="[ '/pickups' ]"> Manager </a>
+                    </li>
+                    <li [ngClass]="{'active': router.url.includes('manageDelivery/fromMap/pickUp')}">
+                        <a [routerLink]="[ '/manageDelivery/fromMap/pickUp' ]"> pickup Map </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="menu" *ngIf="authService.credentials.user.userType!='User'">
+                <a href="#submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <span> Conciergerie</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse show submenu list-unstyled" id="submenu" data-parent="#accordionExample">
+                    <li [ngClass]="{'active': router.url.includes('Conciergerie/list')}">
+                        <a [routerLink]="[ '/manageConciergerie/list' ]"> Requests </a>
+                    </li>
+                    <li [ngClass]="{'active': router.url.includes('Conciergerie/schedule')}">
+                        <a [routerLink]="[ '/manageConciergerie/schedule' ]"> Schedule </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="menu" *ngIf="authService.credentials.user.userType=='Admin'">
+                <a href="#adminUsers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+
+                        <span> {{'USERS.TITLE' | translate }}</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse show submenu list-unstyled" id="adminUsers" data-parent="#accordionExample">
+                    <li [ngClass]="{'active': router.url.includes('/users')}">
+                        <a [routerLink]="[ '/users' ]"> List </a>
+                    </li>
+                    <li [ngClass]="{'active': router.url.includes('/creditTransactions')}">
+                        <a [routerLink]="[ '/payment/creditTransactions' ]">
+                            {{'SIDENAV.CREDIT_TRANSACTION'| translate}}
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+</div>

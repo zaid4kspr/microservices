@@ -1,0 +1,230 @@
+<div class="layout-px-spacing">
+    <div class="account-settings-container layout-top-spacing">
+        <div class="account-content">
+            <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing ">
+                            <form id="work-experience" class="section work-experience" [formGroup]="userForm">
+                                <div class="info">
+                                    <h5 class="">informations personnelles</h5>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div *ngIf="successPMsg" class="alert alert-success" role="alert">
+                                                {{successPMsg}}
+                                            </div>
+                                            <div *ngIf="errorPMsg" class="alert alert-danger" role="alert">
+                                                {{errorPMsg}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-11 mx-auto">
+                                            <div class="work-section">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="degree2">Prénom
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+                                                            <input name="firstName" [ngClass]="{ 'is-invalid': submittedProfile && p.firstName.errors }" formControlName="firstName" type="text" class="form-control mb-4" id="degree2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="degree2">Nom <span class="text-danger">*</span>
+                                                            </label>
+                                                            <input name="lastName" [ngClass]="{ 'is-invalid': submittedProfile && p.lastName.errors }" formControlName="lastName" type="text" class="form-control mb-4" id="degree2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="degree3">Email <span class="text-danger">*</span>
+                                                                    </label>
+                                                                    <input name="email" [ngClass]="{ 'is-invalid': submittedProfile && p.email.errors }" formControlName="email" type="text" class="form-control mb-4" id="degree3" value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="degree4">Téléphone <span class="text-danger">*</span>
+                                                                    </label>
+                                                                    <input name="tel" pattern="[0-9 ]{8}" [ngClass]="{ 'is-invalid': submittedProfile && p.tel.errors }" formControlName="tel" type="text" class="form-control mb-4" id="degree4" value="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="degree3">Mot de passe</label>
+                                                                    <input name="password" [ngClass]="{ 'is-invalid': submittedProfile && p.password.errors }" formControlName="password" type="password" class="form-control mb-4" id="degree3" value="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 text-right mt-5">
+                                                        <button (click)="updateProfile()" id="add-work-exp" class="btn btn-primary">Sauvegarder </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="account-content" *ngIf="user?.userType === 'User'">
+            <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing ">
+                            <form id="work-experience" class="section work-experience" [formGroup]="businessForm">
+                                <div class="info">
+                                    <h5 class="">Informations du Business</h5>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div *ngIf="successBMsg" class="alert alert-success" role="alert">
+                                                {{successBMsg}}
+                                            </div>
+                                            <div *ngIf="errorBMsg" class="alert alert-danger" role="alert">
+                                                {{errorBMsg}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-11 mx-auto">
+                                            <div class="work-section">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="degree2">Nom commercial
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+                                                            <input [ngClass]="{ 'is-invalid': submittedBusiness && f.nomCommercial.errors }" formControlName="nomCommercial" type="text" class="form-control mb-4" id="degree2">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="degree2">Registre du commerce</label>
+                                                            <input [ngClass]="{ 'is-invalid': submittedBusiness && f.registreCommerce.errors }" formControlName="registreCommerce" type="text" class="form-control mb-4" id="degree2">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="degree3">Raison sociale</label>
+                                                                    <input [ngClass]="{ 'is-invalid': submittedBusiness && f.raisonSociale.errors }" formControlName="raisonSociale" type="text" class="form-control mb-4" id="degree3" value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="degree4">Matricule fiscale</label>
+                                                                    <input [ngClass]="{ 'is-invalid': submittedBusiness && f.matriculeFiscale.errors }" formControlName="matriculeFiscale" type="text" class="form-control mb-4" id="degree4" value="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="degree3">Contact email</label>
+                                                                    <input [ngClass]="{ 'is-invalid': submittedBusiness && f.contactEmail.errors }" formControlName="contactEmail" type="text" class="form-control mb-4" id="degree3" value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="degree4">Téléphone
+
+                                                                        <span class="text-danger">*</span>
+                                                                    </label>
+                                                                    <input formControlName="tel" pattern="[0-9 ]{8}" [ngClass]="{ 'is-invalid': submittedBusiness && f.tel.errors }" type="text" class="form-control mb-4" id="degree4" value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="degree4">Site Web</label>
+                                                                    <input [ngClass]="{ 'is-invalid': submittedBusiness && f.website.errors }" formControlName="website" type="text" class="form-control mb-4" id="degree4" value="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="degree3">Adresse
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+                                                            <input [ngClass]="{ 'is-invalid': submittedBusiness && f.address.errors }" formControlName="address" class="form-control mb-4" matGoogleMapsAutocomplete country="tn" [value]="f.address.value" (onAutocompleteSelected)="onAutocompleteSelected($event)" (onLocationSelected)="onLocationSelected($event)" (keyup)="addressInputChanged($event)">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12" *ngIf="latitude&&longitude">
+                                                        <agm-map style="height: 250px;" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+                                                            <agm-marker [latitude]="latitude" [longitude]="longitude">
+                                                            </agm-marker>
+                                                        </agm-map>
+                                                    </div>
+                                                    <div class="col-md-12 text-right mt-5">
+                                                        <button (click)="updateBusiness()" id="add-work-exp" class="btn btn-primary">Sauvegarder
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="account-content" *ngIf="user?.userType === 'User'">
+            <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing ">
+                            <div id="work-experience" class="section work-experience">
+                                <div class="info">
+                                    <h5 class="">Api Key</h5>
+                                    <div class="row">
+                                        <div class="col-md-11 mx-auto">
+                                            <div class="work-section">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="degree2">Key:
+                                                                <span class="text-danger"></span>
+                                                            </label>
+                                                            <input [ngModel]="apiKey" type="text" class="form-control mb-4" id="degree2">
+                                                            <span class="muted-text">Cette clé est dédiée uniquement à votre entreprise et ne doit être utilisée que par votre entreprise. Gardez-le privé s'il vous plaît.</span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-12 text-right mt-5">
+                                                        <button (click)="updateApiKey()" id="add-work-exp" class="btn btn-primary">Régénérer!
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

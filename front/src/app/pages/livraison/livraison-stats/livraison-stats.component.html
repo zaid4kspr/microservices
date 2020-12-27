@@ -1,0 +1,65 @@
+<div class="layout-px-spacing">
+    <div class="row layout-spacing layout-top-spacing" id="cancel-row">
+        <div class="col-lg-12">
+
+            <div class="d-flex">
+                <div class="my-auto mr-2">
+                    <h4>
+                        Date de création :
+                    </h4>
+                </div>
+                <div class="">
+                    <dp-date-picker (onSelect)="getAllStats()" [(ngModel)]="filterStartDate" placeholder="Date de début"
+                        theme="dp-material" [config]="datePickerConfig">
+                    </dp-date-picker>
+                </div>
+                <div class="deleteDateBtn" [hidden]="!filterStartDate" (click)="deleteFilterStartDate()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-x-circle table-cancel">
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
+
+                </div>
+
+                <div class="ml-2">
+                    <dp-date-picker (onSelect)="getAllStats()" [(ngModel)]="filterEndDate" placeholder="Date de Fin"
+                        theme="dp-material" [config]="datePickerConfig">
+                    </dp-date-picker>
+                </div>
+                <div class="deleteDateBtn" [hidden]="!filterEndDate" (click)="deleteFilterEndDate()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-x-circle table-cancel">
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="row mt-2">
+                <div class="col-3 pr-0 mt-2" *ngFor="let item of status">
+                    <div class="statsBox text-center">
+                        <div class="font-weight-bold">
+                            {{ item?.name }}
+                        </div>
+                        <div class="font-weight-bold text-info mt-2">
+                            {{item?.nbDelivery}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+    </div>
+</div>

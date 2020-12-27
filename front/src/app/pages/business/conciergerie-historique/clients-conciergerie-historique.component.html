@@ -1,0 +1,169 @@
+<div class="layout-px-spacing">
+    <div class="row layout-spacing layout-top-spacing" id="cancel-row">
+        <div class="col-lg-12">
+            <div class="widget-content searchable-container list">
+
+                <div class="row mb-3">
+
+
+                    <div class="col-md-4">
+
+                        <div class="d-flex">
+
+                            <div class="">
+                                <dp-date-picker (onSelect)="getAllTherequests()" [(ngModel)]="filterStartDate"
+                                    placeholder="Date de début" theme="dp-material" [config]="datePickerConfig">
+                                </dp-date-picker>
+                            </div>
+                            <div class="deleteDateBtn" [hidden]="!filterStartDate" (click)="deleteFilterStartDate()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-x-circle table-cancel">
+                                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                                </svg>
+
+                            </div>
+
+                            <div class="ml-2">
+                                <dp-date-picker (onSelect)="getAllTherequests()" [(ngModel)]="filterEndDate"
+                                    placeholder="Date de Fin" theme="dp-material" [config]="datePickerConfig">
+                                </dp-date-picker>
+                            </div>
+                            <div class="deleteDateBtn" [hidden]="!filterEndDate" (click)="deleteFilterEndDate()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-x-circle table-cancel">
+                                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                                </svg>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="row mt-3 mb-3 ">
+                    <div class="col">
+                        <div *ngIf="total&&!errorPMsg" class="alert alert-success" role="alert">
+                            Nombre de conciergeries trouvées : {{total}} </div>
+                        <div *ngIf="errorPMsg" class="alert alert-warning" role="alert">
+                            {{errorPMsg}} </div>
+                    </div>
+
+
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <h4 *ngIf="duration">
+                            {{'CONCIERGERIE.DUREE' | translate }} :
+                            {{duration}}
+                        </h4>
+                    </div>
+                </div>
+                <div class="searchable-items list">
+                    <div class="items items-header-section">
+
+                        <div class="item-content ">
+                            <div class="col-1">
+                                <div class="user-meta-info">
+                                    <input type="checkbox" (click)="selectAll($event)" [(ngModel)]="allSelected">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h4>{{'CONCIERGERIE.CREATED_BY' | translate }} </h4>
+                            </div>
+                            <div class="user-email col">
+                                <h4>{{'CONCIERGERIE.ADDRESS' | translate }}</h4>
+                            </div>
+
+                            <div class="user-phone col">
+                                <h4>{{'CONCIERGERIE.FROM' | translate }}</h4>
+                            </div>
+                            <div class="user-phone col">
+                                <h4>{{'CONCIERGERIE.TO' | translate }}</h4>
+                            </div>
+                            <div class="user-phone col">
+                                <h4>{{'CONCIERGERIE.FINISHED_AT' | translate }}</h4>
+                            </div>
+
+                            <div class="user-phone col">
+                                <h4>{{'CONCIERGERIE.DUREE' | translate }}</h4>
+                            </div>
+                            <div class="user-phone col">
+                                <h4> {{'CONCIERGERIE.DRIVER' | translate }}</h4>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="items" *ngFor="let i = index;let item of requests  | paginate : { itemsPerPage: 10,
+                         currentPage: p,
+                        totalItems: total }">
+                        <div class="item-content">
+
+                            <div class="user-profile col-1">
+                                <div class="user-meta-info">
+                                    <input type="checkbox" (click)="selectOne($event,i)" [checked]="checkSelect[i]">
+                                </div>
+                            </div>
+                            <div class="user-profile col">
+
+                                <div class="user-meta-info">
+                                    <p class="usr-location my-1 ml-2">{{item?.createdBy?.name}}</p>
+
+                                </div>
+                            </div>
+
+                            <div class="user-location col">
+
+                                <p class="usr-location ">{{item?.pickUp?.pickUpAddress}}</p>
+                            </div>
+                            <div class="user-phone col">
+                                <p class=" ">{{item?.startDate| date:'dd MMM yyyy  hh:mm a '}}</p>
+                            </div>
+                            <div class="user-phone col">
+                                <p class=" ">{{item?.endDate| date:'dd MMM yyyy  hh:mm a'}}</p>
+                            </div>
+                            <div class="user-phone col">
+                                <p class=" ">{{item?.FinishJobDate| date:'dd MMM yyyy  hh:mm a'}}</p>
+                            </div>
+
+
+                            <div class="user-phone col">
+                                <span *ngIf="item?.duration?.day ">
+                                    {{ item?.duration?.day }} jour(s),
+                                </span>
+                                <span *ngIf="item?.duration?.hour ">
+                                    {{ item?.duration?.hour }} heure(s)
+                                </span>
+                                <span *ngIf="item?.duration?.min">
+                                    {{item?.duration.min }} minute(s)
+                                </span>
+
+
+                            </div>
+
+                            <div class="user-phone col">
+                                <p class=" ">{{item?.driver?.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row my-4">
+                    <div class="col text-center">
+                        <pagination-controls autoHide="true" (pageChange)="changePage($event)"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

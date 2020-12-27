@@ -94,4 +94,25 @@ services:
       - service-etudiants
       - service-enseignant
       - service-admins
-    restart: always    
+    restart: always
+    healthcheck:
+      test: "curl --fail --silent localhost:8080/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+  service-auth:
+    build: service-auth
+    ports:
+      - "3300:3300"
+    volumes:
+      - ./auth-develop
+    depends_on:
+      service-config:
+        condition: service_healthy
+      service-register:
+        condition: service_healthy
+    links:
+      - service-proxy
+    restart: always

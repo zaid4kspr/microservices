@@ -1,0 +1,29 @@
+<!--  nav-->
+<app-nav-bar *ngIf="!router.url.includes('auth')&&!router.url.includes('Position')&&!router.url.includes('updatedropofflocation')&&!router.url.includes('updatepickuplocation')">
+</app-nav-bar>
+<!--  nav-->
+<ngx-loading-bar></ngx-loading-bar>
+
+
+<div class="main-container" id="container"
+        [ngClass]="{'pl-0': router.url.includes('auth')||router.url.includes('Position')||router.url.includes('updatedropofflocation')||router.url.includes('updatepickuplocation')}">
+
+        <div class="overlay"></div>
+        <div class="search-overlay"></div>
+
+        <!-- side nav-->
+        <app-side-nav *ngIf="!router.url.includes('auth')&&!router.url.includes('Position')&&!router.url.includes('updatedropofflocation')&&!router.url.includes('updatepickuplocation')"></app-side-nav>
+        <!-- side nav-->
+        <div id="content" class="main-content"
+                [ngClass]="{'ml-0 mt-0': router.url.includes('auth')||router.url.includes('Position')||router.url.includes('updatedropofflocation')|| router.url.includes('updatepickuplocation')}">
+                <!--  BEGIN MAIN CONTAINER  -->
+                <router-outlet></router-outlet>
+        </div>
+        <!-- END MAIN CONTAINER -->
+</div>
+
+<audio id="myAudio">
+
+        <source src="./../assets/notifSounds/notif.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+</audio>

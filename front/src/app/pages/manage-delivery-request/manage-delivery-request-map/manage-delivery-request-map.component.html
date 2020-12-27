@@ -1,0 +1,253 @@
+<div class="layout-px-spacing">
+    <div class=" layout-spacing " id="cancel-row">
+        <div class="row mb-2">
+            <div class="col">
+
+                <ng-select [items]="status" [multiple]="true" [closeOnSelect]="true" [searchable]="false" bindValue="value" placeholder="Filtrer" [(ngModel)]="selectedSatus" (change)="getDeliveryRequests()">
+                    <ng-template ng-label-tmp let-item="item" class="p-3">
+                        <div class="px-2 py-1">
+                            {{ 'NOTIFICATION.STATUS.'+item.name+'' | translate}}
+                        </div>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm" translate>
+                        {{ 'NOTIFICATION.STATUS.'+item.name+'' | translate}}
+                    </ng-template>
+                </ng-select>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+
+                <agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng" style=" height: 86vh;
+                width: 100%;
+                position: absolute;
+                top: 0px;
+                left: 15px;
+                background-color: rgb(229, 227, 223);" (mapReady)="onMapReady($event)">
+                    <agm-marker [iconUrl]="item.type==1 ?  ( item.driver ?  iconFromwithDriver : iconFrom  )   :  (item.isReturningToClient ? iconReturn : (  item.driver  ? iconToWithDriver :iconTo )  ) " [latitude]="item.latitude" [longitude]="item.longitude" *ngFor="let item of deliveryRequests" (mouseOver)="openWindow(item)" (mouseOut)="hideInfo()" (markerClick)="updateDriver(item)">
+                        <agm-info-window class="m-0 p-0" [isOpen]="isInfoWindowOpen(item)" [latitude]="item.latitude" [longitude]="item.longitude" (mouseleave)="hideInfo()">
+                            <div *ngIf="item.driver">
+                                <div class="text-center">
+                                    <img class="driverImg" src="./../../../../assets/img/icons/taxi-driver.svg" alt="">
+                                </div>
+                                <div class="text-center text-center text-info  my-1">
+                                    {{item?.driver?.name}}
+                                </div>
+                                <div class="text-center text-center my-1">
+                                    {{item?.driver?.tel}}
+                                </div>
+                                <div class="text-center">
+                                    <div class="shadow-none badge badge-primary" *ngIf="item.status==1">
+                                        {{'NOTIFICATION.STATUS.NEW'| translate}}
+                                    </div>
+                                    <div class="shadow-none badge badge-warning" *ngIf="item.status==2">
+                                        {{'NOTIFICATION.STATUS.ASSIGNED'| translate}}
+                                    </div>
+                                    <div class="shadow-none badge badge-success" *ngIf="item.status==3">
+                                        {{'NOTIFICATION.STATUS.ACCEPTED'| translate}}
+                                    </div>
+                                    <div class="shadow-none badge badge-danger" *ngIf="item.status==4">
+                                        {{'NOTIFICATION.STATUS.DECLINED'| translate}}
+                                    </div>
+                                    <div class="shadow-none badge badge-info" *ngIf="item.status==5">
+                                        {{'NOTIFICATION.STATUS.STARTED'| translate}}
+                                    </div>
+                                    <div class="shadow-none badge badge" *ngIf="item.status==6">
+                                        {{'NOTIFICATION.STATUS.FINISHED'| translate}}
+                                    </div>
+                                    <div class="shadow-none badge badge-danger" *ngIf="item.status==7">
+                                        {{'NOTIFICATION.STATUS.DECLINED_LAST_MINUTE'| translate}}
+                                    </div>
+                                    <div class="shadow-none badge badge-danger" *ngIf="item.status==8">
+                                        {{'NOTIFICATION.STATUS.DECLINED_BY_ADMIN'| translate}}
+                                    </div>
+                                    <div class="shadow-none badge badge-success" *ngIf="item.status==10">
+                                        {{'NOTIFICATION.STATUS.PICKED_UP'| translate}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="!item.driver">
+                                No driver assigned yet
+                            </div>
+                            <div *ngIf="!item.pickUpJob">
+                                <div class="text-center mt-1">
+                                    {{item.startDate | date }}
+                                </div>
+                                <div class="text-center">
+                                    {{item.startDate | date:'HH:mm ' }}
+                                    <img src="./../../../../assets/img/icons/rightArroworange.png" class="iconArrow" alt="">
+                                    {{item.endDate | date:'HH:mm ' }}
+                                </div>
+                            </div>
+
+
+                        </agm-info-window>
+                    </agm-marker>
+                </agm-map>
+
+
+            </div>
+
+            <div class="col-md-5">
+                <div class="leftpart px-3 pt-3">
+                    <div class="card" *ngIf="!openedWindow&&jbRequestHistory==null||listOfSelectedJobs.length>0">
+                        <div class="card-body">
+                            <div *ngIf="listOfSelectedJobs.length>0">
+                                <div class="row mb-3">
+                                    <div class="col-3 my-auto ">
+                                        <div class="n-chk">
+                                            <label class="mb-0 new-control new-checkbox checkbox-outline-info new-checkbox-text">
+                                                <input (change)="selectAllDeliveryJobs($event)" type="checkbox" class="new-control-input">
+                                                <span class="new-control-indicator"></span><span class="new-chk-content">All</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h5>
+                                            List of selected jobs
+                                        </h5>
+                                    </div>
+
+                                </div>
+                                <div class="row mt-2" *ngFor="let item of listOfSelectedJobs">
+                                    <div class="col-1 ">
+                                        <div class="n-chk">
+                                            <label class="mb-0 new-control new-checkbox checkbox-outline-info new-checkbox-text">
+                                                <input [checked]="item.selected" (change)="item.selected=!item.selected" type="checkbox" class="new-control-input">
+                                                <span class="new-control-indicator"></span><span class="new-chk-content">&nbsp;</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col my-auto ft-12 d-flex pl-0">
+                                        <div class="mx-2">
+                                            <img class="icoSize" src="{{item.type==1 ? iconFrom.url: iconTo.url}}" alt="">
+                                        </div>
+                                        <div class="my-auto">
+                                            <span *ngIf="item.isReturningToClient" class="text-info">
+                                                {{'LIVRAISON.RETURNING_SHIPMENT' | translate }},
+                                            </span>
+                                            <span *ngIf="item.packageSize==0"> {{'LIVRAISON.EXTRA_SMALL' | translate}}
+                                            </span>
+                                            <span *ngIf="item.packageSize==1"> {{'LIVRAISON.SMALL' | translate}} </span>
+                                            <span *ngIf="item.packageSize==2"> {{'LIVRAISON.MEDIUM' | translate}}
+                                            </span>
+                                            <span *ngIf="item.packageSize==3"> {{'LIVRAISON.LARGE' | translate}} </span>
+                                            <span *ngIf="item.packageSize==4"> {{'LIVRAISON.EXTRA_LARGE' | translate}}
+                                            </span>
+                                            {{'LIVRAISON.PACKAGE'| translate}}
+                                            {{item?.address}}
+                                            , <span *ngIf='jobType==="pickUp"'> {{item?.business.nomCommercial}} </span>
+                                            <span *ngIf='jobType==="dropOff"'> {{item?.dropOff.deliveredTo.name}} </span>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col text-right">
+                                        <button (click)="deleteSelectedShape()" class="btn btn-danger py-1">
+                                            delete Polygon
+                                        </button>
+                                    </div>
+                                    <div class="col text-right">
+                                        <button (click)="assignDriver()" [disabled]="!assignBtnDisabled()" class="btn btn-primary py-1">
+                                            {{'LIVRAISON.ASSIGN'| translate}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="listOfSelectedJobs.length==0">
+                                <img class="deliveryImg" src="./../../../../assets/img/delivery/delivery.jpg" alt="">
+                                <div class="text-center">
+                                    Captain is waiting for your orders
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" *ngIf="(openedWindow&&listOfSelectedJobs.length==0&&jbRequestHistory)||(listOfSelectedJobs.length==0&&jbRequestHistory)">
+                        <div class="card-body">
+                            <app-job-request-history [job]="jbRequestHistory"></app-job-request-history>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="assignDriver" tabindex="-1" aria-labelledby="assignDriverLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="assignDriverLabel">Assign a driver</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row mt-3 mb-2">
+                    <div class="col">
+                        <ng-select [(ngModel)]="selectedDriver" placeholder="select a driver" [items]="drivers" bindLabel="name">
+
+
+                            <ng-template (change)="driverChange()" ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                                <div class="d-flex justify-content-between my-auto">
+                                    <h6 class="mb-0" [ngOptionHighlight]="search">{{item.name}}</h6>
+
+                                </div>
+                            </ng-template>
+
+
+                        </ng-select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="assignDriverToJobs()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- update driver Modal -->
+<div class="modal fade" id="updateDriver" tabindex="-1" aria-labelledby="updateDriverLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="assignDriverLabel">update a driver</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row mt-3 mb-2">
+                    <div class="col">
+                        <ng-select [(ngModel)]="updateDrivermInModal.driver" placeholder="select a driver" [items]="drivers" bindLabel="name">
+                            <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                                <div class="d-flex justify-content-between my-auto">
+                                    <h6 class="mb-0" [ngOptionHighlight]="search">{{item.name}}</h6>
+                                </div>
+                            </ng-template>
+                        </ng-select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="saveUpdateJobRequest()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

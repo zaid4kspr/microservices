@@ -1,0 +1,172 @@
+<div >
+    <!-- pickup status -->
+    <!-- PickUp:
+new => En attente <br> d'enlévement (edited) 
+Assigned => Assigné
+Declined => Refusé par chauffeur
+Picked Up => Pickup assurée
+Pickup terminée => Entrée au centrale (edited)  -->
+    <div *ngIf="!item.pickUpJob">
+        <div class="badge badge-info" *ngIf="status==1">
+            En attente <br> d'enlévement
+        </div>
+        <div class="badge badge-info" *ngIf="status==2">
+            Assigné
+        </div>
+
+        <div class="badge badge-danger" *ngIf="status==4">
+            Refusé par chauffeur
+        </div>
+
+        <div class="badge badge-warning" *ngIf="status==10">
+            Pickup assurée
+        </div>
+        <div class="badge badge-success" *ngIf="status==6">
+            Entrée au centrale
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==14">
+            Annulée par vendeur
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==16">
+            Retour définitif
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==17">
+            Retour vendeur
+        </div>
+
+        <div class="shadow-none badge badge-success" *ngIf="status==3">
+            {{'NOTIFICATION.STATUS.ACCEPTED'| translate}}
+        </div>
+        <div class="shadow-none badge badge-info" *ngIf="status==5">
+            {{'NOTIFICATION.STATUS.STARTED'| translate}}
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==7">
+            {{'NOTIFICATION.STATUS.DECLINED_LAST_MINUTE'| translate}}
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==8">
+            {{'NOTIFICATION.STATUS.DECLINED_BY_ADMIN'| translate}}
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==9">
+            {{'NOTIFICATION.STATUS.UNSUCCESSFUL'| translate}}
+        </div>
+
+
+    </div>
+
+    <!-- livraison status -->
+    <!-- 
+new => En attente <br> de livraison
+Assigned => Assigné
+Declined => Refusé par chauffeur
+Picked up => Livraison en cours
+Finished => Commande livrée
+Retour au magazin => Retour provisoir <br> { Raison }
+Retour difinitif => Retour difinitif
+Retour au client => Retour vendeur
+Canceled/ Declined by client => Annulée par vendeur
+ -->
+    <div *ngIf="item.pickUpJob">
+
+
+        <div class="badge badge-info" *ngIf="status==1">
+            En attente <br> de livraison
+        </div>
+        <div class="badge badge-info" *ngIf="status==2">
+            Assigné
+        </div>
+        <div class="badge badge-danger" *ngIf="status==4">
+            Refusé par chauffeur
+        </div>
+        <div class="badge badge-warning" *ngIf="status==10">
+            Livraison en cours
+        </div>
+        <div class="badge badge-success" *ngIf="status==6">
+            Commande livrée
+        </div>
+        <div class="badge badge-success" *ngIf="status==15">
+            Retour provisoir <br> {{item?.failureReason}}
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==16">
+            Retour définitif
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==17">
+            Retour vendeur
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==14">
+            Annulée par vendeur
+        </div>
+
+        <div class="shadow-none badge badge-success" *ngIf="status==3">
+            {{'NOTIFICATION.STATUS.ACCEPTED'| translate}}
+        </div>
+        <div class="shadow-none badge badge-info" *ngIf="status==5">
+            {{'NOTIFICATION.STATUS.STARTED'| translate}}
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==7">
+            {{'NOTIFICATION.STATUS.DECLINED_LAST_MINUTE'| translate}}
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==8">
+            {{'NOTIFICATION.STATUS.DECLINED_BY_ADMIN'| translate}}
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==9">
+            {{'NOTIFICATION.STATUS.UNSUCCESSFUL'| translate}}
+        </div>
+    </div>
+
+</div>
+
+<!-- status 4 partner -->
+<div *ngIf="status4Partner&&0">
+    <!-- status des pickup -->
+    <!-- 
+New == Assigned == Declined by driver ====> En attente <br> d'enlévement
+
+
+     -->
+    <div *ngIf="!item.pickUpJob">
+        <div class="badge badge-info" *ngIf="status==1|| status==2 || status==4">
+            En attente <br> d'enlévement
+        </div>
+        <div class="badge badge-warning" *ngIf="status==10">
+            Pickup assurée par INTIGO
+        </div>
+        <div class="badge badge-success" *ngIf="status==6">
+            Entrée au centrale
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==14">
+            Annulée par vendeur
+        </div>
+        <div class="shadow-none badge badge-info" *ngIf="status==5">
+            {{'NOTIFICATION.STATUS.STARTED'| translate}}
+        </div>
+    </div>
+
+
+    <!-- status des livraison -->
+    <div *ngIf="item.pickUpJob">
+        <div class="badge badge-info" *ngIf="status==1|| status==2 || status==4">
+            En attente <br> de livraison
+        </div>
+
+        <div class="badge badge-warning" *ngIf="status==10 || status ==5">
+            Livraison en cours
+        </div>
+        <div class="badge badge-success" *ngIf="status==6">
+            Commande livrée
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==14">
+            Annulée par vendeur
+        </div>
+        <div class="badge badge-success" *ngIf="status==15">
+            Retour provisoir <br> {{item?.failureReason}}
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==16">
+            Retour définitif
+        </div>
+        <div class="shadow-none badge badge-danger" *ngIf="status==17">
+            Retour vendeur
+        </div>
+
+
+    </div>
+</div>

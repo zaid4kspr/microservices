@@ -1,0 +1,94 @@
+<div class="layout-px-spacing">
+
+    <div class="account-settings-container layout-top-spacing">
+        <div class="card paymentBox">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col">
+                        <h4 class="font-weight-bold">
+                            {{'PAYMENT.TITLE' | translate}}
+
+
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        {{'PAYMENT.DESC' | translate}}
+
+
+                    </div>
+                </div>
+                <form [formGroup]="pointsForm">
+                    <div class="row mt-5 text-left">
+                        <div class="my-auto">
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group mb-0">
+                                <label for="degree2">
+
+                                    Number of Points :
+
+                                </label>
+
+
+                                <input min="1" [pattern]="pointsPatetrn"
+                                    [ngClass]="{ 'is-invalid': f.points.errors?.pattern||(submitted && f.points.errors )}"
+                                    formControlName="points" type="number" class="form-control " id="degree2">
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-2 mt-md-0 mt-3">
+                            <div class=" mb-0">
+                                <label for="degree2">
+
+                                    Number Of Hours :
+
+                                </label>
+
+
+                                <h5 class="mt-md-2">
+                                    {{f.points.value/2}} Hours
+                                </h5>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 mt-md-0 mt-3">
+                            <div class=" mb-0">
+                                <label for="degree2">
+
+                                    It will cost :
+
+                                </label>
+
+
+                                <h5 class="mt-md-2">
+                                    {{f.points.value*7}} Dinars
+                                </h5>
+
+                            </div>
+                        </div>
+                        <div class="col-3 ml-auto text-right">
+                            <button class="btn btn-primary" (click)="pay()">
+                                Payer
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<form method="post" [hidden]="1" ngNoForm action="{{actionUrl}}/gateway/">
+    <input name="payment_token" value="{{token}}">
+    <input name="url_ok" value="{{frontEndUrl}}/payment/success">
+    <input name="url_ko" value="{{frontEndUrl}}/payment/fail?payment_token={{token}}">
+    <button id="payBtn">Payer</button>
+</form>

@@ -1,0 +1,37 @@
+@import './../../../../assets/css/apps/contacts.css';
+
+.availability{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  
+}
+.deleteDateBtn{
+    margin: auto;
+    margin-left: -30px;
+    z-index: 999;
+}
+.no{
+    background: #e7515a;
+}
+.yes{
+
+    background: #49cc90;
+}
+.maybe{
+
+    background:orange;
+}
+
+ng-select.required.ng-invalid.ng-touched {
+    .ng-select-container{
+        border-color: #dc3545;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px #fde6e8;
+    }
+}
+ng-select.required.ng-invalid.ng-untouched {
+    .ng-select-container{
+        border-color: #dc3545;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px #fde6e8;
+    }
+}

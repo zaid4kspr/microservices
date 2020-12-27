@@ -1,0 +1,340 @@
+<div class="layout-px-spacing">
+    <!-- first row -->
+    <div class="row" style="justify-content: center">
+        <div class="col-md-3 " *ngIf="0">
+            <div class="statsBox">
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="./../../../../assets/img/statsIcons/partner.png" class="statIcon" alt="">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col text-center text-dark font-weight-bold">
+                        Intigo Logistics
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col ft-10 px-0 text-center">
+                        Nouvelle inscriptions
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.nbPartnarsThisMonth}}
+                        </div>
+                    </div>
+                    <div class="col ft-10 px-0 text-center">
+                        Partenaires
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.nbPartnars}}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="statsBox">
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="./../../../../assets/img/statsIcons/colislivre.png" class="statIcon" alt="">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col text-center text-dark font-weight-bold">
+                        Colis livrés
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col ft-10 px-0 text-center">
+                        Ce Mois
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.colisLivreThisMonth}}
+                        </div>
+                    </div>
+                    <div class="col ft-10 px-0 text-center">
+                        Total
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.colisLivre}}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="statsBox">
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="./../../../../assets/img/statsIcons/attenteenlevement.png" class="statIcon" alt="">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col text-center text-dark font-weight-bold">
+                        Attente enlévement
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <!-- <div class="col ft-10 px-0 text-center">
+                        Ce Mois
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.attenteEnlevementThisMonth}}
+                        </div>
+                    </div> -->
+                    <div class="col ft-10 px-0 text-center">
+                        Total
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.attenteEnlevement}}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="statsBox">
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="./../../../../assets/img/statsIcons/assure.png" class="statIcon" alt="">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col text-center text-dark font-weight-bold">
+                        Pick-Up assuré
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col ft-10 px-0 text-center">
+                        Ce Mois
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.pickUpTermineThisMonth
+                                }}
+                        </div>
+                    </div>
+                    <div class="col ft-10 px-0 text-center">
+                        Total
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.pickUpTermine}}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- second row -->
+    <div class="row mt-3" style="justify-content: center">
+        <div class="col-md-3">
+            <div class="statsBox">
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="./../../../../assets/img/statsIcons/enattente.png" class="statIcon" alt="">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col text-center text-dark font-weight-bold">
+                        Attente livraison </div>
+                </div>
+
+                <div class="row mt-3">
+                    <!-- <div class="col ft-10 px-0 text-center">
+                        Ce Mois
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.attenteLivraisonThisMonth}}
+                        </div>
+                    </div> -->
+                    <div class="col ft-10 px-0 text-center">
+                        Total
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.attenteLivraison}}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="statsBox">
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="./../../../../assets/img/statsIcons/encours.png" class="statIcon" alt="">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col text-center text-dark font-weight-bold">
+                        livraison en cours
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <!-- <div class="col ft-10 px-0 text-center">
+                        Ce Mois
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.livraisonEnCoursThisMonth}}
+                        </div>
+                    </div> -->
+                    <div class="col ft-10 px-0 text-center">
+                        Total
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.livraisonEnCours}}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="statsBox">
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="./../../../../assets/img/statsIcons/Redef.png" class="statIcon" alt="">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col text-center text-dark font-weight-bold">
+                        Retour Provisoire
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <!-- <div class="col ft-10 px-0 text-center">
+                        Ce Mois
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.retourProvisoireThisMonth}}
+                        </div>
+                    </div> -->
+                    <div class="col ft-10 px-0 text-center">
+                        Total
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.retourProvisoire}}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3 d-none">
+            <div class="statsBox">
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="./../../../../assets/img/statsIcons/partner.png" class="statIcon" alt="">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col text-center text-dark font-weight-bold">
+                        Pick-Up assuré
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col ft-10 px-0 text-center">
+                        Ce Mois
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.pickUpAssureThisMonth}}
+                        </div>
+                    </div>
+                    <div class="col ft-10 px-0 text-center">
+                        Total
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.pickUpAssure}}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- third row -->
+    <div class="row my-3" style="justify-content: center">
+        <div class="col-md-3">
+            <div class="statsBox">
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="./../../../../assets/img/statsIcons/retour_def.png" class="statIcon" alt="">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col text-center text-dark font-weight-bold">
+                        Retour définitif </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col ft-10 px-0 text-center">
+                        Ce Mois
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.retourDefinitifThisMonth     }}
+                        </div>
+                    </div>
+                    <div class="col ft-10 px-0 text-center">
+                        Total
+                        <div class="text-center ft-14 font-weight-bold text-dark">
+                            {{myStats?.retourDefinitif}}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+
+
+
+    <div *ngIf="0" class="row layout-top-spacing justify-content-md-center text-center">
+        <div class="col-md-3 px-md-0 text-center padding-75">
+            <a [routerLink]="[ '/business/livraison' ]"
+                [class.disabled]="!authService.credentials.user.services.includes('2')">
+                <img class="servicesIcon img-fluid img1" src="./../../../../assets/img/services/s1.png" alt="">
+                <h3 class="serviceName mt-3 mb-3">{{'SIDENAV.DELIVERY' | translate }}</h3>
+                <p class="serviceDescription d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
+                    <img class="seeMore img-fluid" src="./../../../../assets/img/services/icon-down.png">
+                </p>
+            </a>
+        </div>
+        <div class="col-md-3 px-md-0 mt-3 mt-md-0 text-center padding-75">
+            <a [class.disabled]="!authService.credentials.user.services.includes('3')"
+                [routerLink]="[ '/business/express' ] ">
+                <img class="servicesIcon img-fluid img2" src="./../../../../assets/img/services/s2.png" alt="">
+                <h3 class="serviceName mt-3 mb-3">{{'SIDENAV.EXPRESS_DELIVERY' | translate }}</h3>
+                <p class="serviceDescription d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
+                    <img class="seeMore img-fluid" src="./../../../../assets/img/services/icon-down.png">
+                </p>
+            </a>
+        </div>
+        <div class="col-md-3 px-md-0 mt-3 mt-md-0 text-center padding-75">
+            <a [class.disabled]="!authService.credentials.user.services.includes('1')"
+                [routerLink]="[ '/business/conciergerie' ]">
+                <img class="servicesIcon img-fluid img3" src="./../../../../assets/img/services/s3.png" alt="">
+                <h3 class="serviceName mt-3 mb-3">{{'SIDENAV.CONCIERGERIE' | translate }}</h3>
+                <p class="serviceDescription d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
+                    <img class="seeMore img-fluid" src="./../../../../assets/img/services/icon-down.png">
+                </p>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,169 @@
+<div class="layout-px-spacing">
+    <div *ngIf="message" class="row my-3">
+        <div class="col-12">
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+        </div>
+    </div>
+    <div class="row layout-spacing layout-top-spacing" id="cancel-row">
+        <div class="col-lg-12">
+            <div class="widget-content searchable-container list">
+                <div class="searchable-items list">
+                    <div class="items items-header-section">
+                        <div class="item-content ">
+                            <div class="col">
+                                <h4>{{'CONCIERGERIE.CREATED_BY' | translate }} </h4>
+                            </div>
+
+                            <div class="user-location col">
+                                <h4>{{'CONCIERGERIE.BUSINESS' | translate }} </h4>
+                            </div>
+                            <div class="user-phone col">
+                                <h4>{{'PACKING_SLIP.PICKUP' | translate }} </h4>
+                            </div>
+                            <div class="user-phone col">
+                                <h4>{{'PACKING_SLIP.DROP_OFF' | translate }} </h4>
+                            </div>
+
+
+
+                            <div class="action-btn col">
+                                Action
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="items" *ngFor="let item of packingSlip  | paginate : { itemsPerPage: 10,
+                         currentPage: p,
+                        totalItems: total }">
+                        <div class="item-content">
+                            <div class="user-profile col">
+
+                                <div class="user-meta-info">
+                                    <p class="usr-location my-1 ml-2">{{item?.pickUpjobRequest?.createdBy?.name}}</p>
+
+                                </div>
+                            </div>
+                            <div class="user-email col">
+
+                                <p class="usr-email-addr" *ngIf="!item.pickUpjobRequest?.passingClientName">
+                                    {{ item?.pickUpjobRequest?.business?.nomCommercial}}</p>
+                                <p class="usr-email-addr" *ngIf="item.pickUpjobRequest.passingClientName">
+                                    {{item.pickUpjobRequest?.passingClientName}}</p>
+                            </div>
+                            <div class="user-location col">
+                                <p>
+                                    {{item.pickUpjobRequest.pickUp.pickUpAddress}}
+                                </p>
+                                <p class="usr-location ">
+                                    <span class="  text-primary text-center" *ngIf="item.pickUpjobRequest.status==1">
+                                        -
+                                    </span>
+                                    <span class="  text-warning" *ngIf="item.pickUpjobRequest.status==2">
+                                        {{'NOTIFICATION.STATUS.ASSIGNED'| translate}}
+                                    </span>
+                                    <span class="   text-success" *ngIf="item.pickUpjobRequest.status==3">
+                                        {{'NOTIFICATION.STATUS.ACCEPTED'| translate}}
+                                    </span>
+                                    <span class="   text-danger" *ngIf="item.pickUpjobRequest.status==4">
+                                        {{'NOTIFICATION.STATUS.DECLINED'| translate}}
+                                    </span>
+                                    <span class="   text-info" *ngIf="item.pickUpjobRequest.status==5">
+                                        {{'NOTIFICATION.STATUS.STARTED'| translate}}
+                                    </span>
+                                    <span class="   text-info " *ngIf="item.pickUpjobRequest.status==6">
+                                        {{'NOTIFICATION.STATUS.FINISHED'| translate}}
+                                    </span>
+                                    <span class="   text-danger" *ngIf="item.pickUpjobRequest.status==7">
+                                        {{'NOTIFICATION.STATUS.DECLINED_LAST_MINUTE'| translate}}
+                                    </span>
+                                    <span class="   text-danger" *ngIf="item.pickUpjobRequest.status==8">
+                                        {{'NOTIFICATION.STATUS.DECLINED_BY_ADMIN'| translate}}
+                                    </span>
+                                    <span class="   text-danger" *ngIf="item.pickUpjobRequest.status==9">
+                                        {{'NOTIFICATION.STATUS.UNSUCCESSFUL'| translate}}
+                                    </span>
+                                    <span class="shadow-none  text-success" *ngIf="item.pickUpjobRequest.status==10">
+                                        {{'NOTIFICATION.STATUS.PICKED_UP'| translate}}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="user-phone col">
+                                <p>
+                                    {{item.dropOffjobRequest.dropOff.dropOffAddress}}
+                                </p>
+                                <p class=" ">
+
+                                    <span class="  text-primary" *ngIf="item.dropOffjobRequest.status==1">
+                                        -
+                                    </span>
+                                    <span class="  text-warning" *ngIf="item.dropOffjobRequest.status==2">
+                                        {{'NOTIFICATION.STATUS.ASSIGNED'| translate}}
+                                    </span>
+                                    <span class="   text-success" *ngIf="item.dropOffjobRequest.status==3">
+                                        {{'NOTIFICATION.STATUS.ACCEPTED'| translate}}
+                                    </span>
+                                    <span class="   text-danger" *ngIf="item.dropOffjobRequest.status==4">
+                                        {{'NOTIFICATION.STATUS.DECLINED'| translate}}
+                                    </span>
+                                    <span class="   text-info" *ngIf="item.dropOffjobRequest.status==5">
+                                        {{'NOTIFICATION.STATUS.STARTED'| translate}}
+                                    </span>
+                                    <span class="   text-info " *ngIf="item.dropOffjobRequest.status==6">
+                                        {{'NOTIFICATION.STATUS.FINISHED'| translate}}
+                                    </span>
+                                    <span class="   text-danger" *ngIf="item.dropOffjobRequest.status==7">
+                                        {{'NOTIFICATION.STATUS.DECLINED_LAST_MINUTE'| translate}}
+                                    </span>
+                                    <span class="   text-danger" *ngIf="item.dropOffjobRequest.status==8">
+                                        {{'NOTIFICATION.STATUS.DECLINED_BY_ADMIN'| translate}}
+                                    </span>
+                                    <span class="   text-danger" *ngIf="item.dropOffjobRequest.status==9">
+                                        {{'NOTIFICATION.STATUS.UNSUCCESSFUL'| translate}}
+                                    </span>
+                                    <span class="text-success" *ngIf="item.dropOffjobRequest.status==10">
+                                        {{'NOTIFICATION.STATUS.PICKED_UP'| translate}}
+                                    </span>
+                                    <span class="shadow-none badge badge-danger" *ngIf="item.status==14">
+                                        {{'NOTIFICATION.STATUS.DECLINED_BY_CLIENT'| translate}}
+                                    </span>
+                                    <span class="shadow-none badge badge-danger" *ngIf="item.status==15">
+                                        {{item?.jobRequest?.failureReason}}
+                                    </span>
+                                    <span class="shadow-none badge badge-danger" *ngIf="item.status==16">
+                                        Retour définitif
+                                    </span>
+                                    <span class="shadow-none badge badge-danger" *ngIf="item.status==17">
+                                        Retour au client
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="action-btn col text-center justify-content-between">
+
+                                <button *ngIf="item.pickUpjobRequest.pickUp && !item.pickUpjobRequest.pickUp.exactPickUpAddress" class="btn btn-primary py-1 mb-3" (click)="askForPickUpAddress(item)">
+                                    Demander l'adresse de ramassage
+                                </button>
+                                <br>
+                                <button *ngIf="item.dropOffjobRequest.dropOff && !item.dropOffjobRequest.dropOff.exactDropOffAddress" class="btn btn-primary py-1" (click)="askForDropOffAddress(item)">
+                                    Demander l'adresse de dépose
+                                </button>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row my-4">
+                        <div class="col text-center">
+                            <pagination-controls autoHide="true" (pageChange)="changePage($event)">
+                            </pagination-controls>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

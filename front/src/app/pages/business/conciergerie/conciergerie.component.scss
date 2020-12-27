@@ -1,0 +1,80 @@
+
+@import'./../../../../assets/css/forms/switches.css';
+.box {
+    cursor: pointer;
+    border: 1px solid #bfc9d4;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.boxActive{
+    border: 2px solid #0098a6 !important;
+    color: #0098a6 !important;
+}
+
+
+.leftpart{
+    overflow: hidden;
+    min-height: 88vh;
+        background: #f0f3f7;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);
+}
+
+    .layout-px-spacing {
+        padding: 0 20px 0 0px!important;
+            min-height: calc(100vh - 170px)!important;
+        }
+
+
+.requestFixedRow{
+    background: #fff;
+    padding: 13px 48px;
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    bottom: 0;
+}
+
+.sizeTitle{
+    font-size: 12px;
+    font-weight: 600;
+    color: black;
+}
+.packageSizeBox{
+    cursor: pointer;
+    border: 1px solid #bfc9d4;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+}
+.packageSizeBoxActive{
+
+    border: 2px solid #0098a6 !important;
+
+    color: #0098a6 !important;
+}
+
+.day{
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 50%;
+    background-color: #f1f3f4;
+    color: #80868b;
+    margin-right: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+}
+
+.dayActive{
+    background: #0098a6;
+    color: white;
+}
+.spinner-border{
+    height: 15px;
+    width: 15px;
+}

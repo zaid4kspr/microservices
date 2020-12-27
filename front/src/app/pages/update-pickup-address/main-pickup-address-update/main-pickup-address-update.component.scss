@@ -1,0 +1,12 @@
+.btn-info.disabled, .btn-info.btn[disabled], .btn-info:disabled {
+    background-color: #9fa4a9;
+    border:0;
+}
+
+.topAbso{
+    position: absolute;
+    top: 0;
+    z-index: 9;
+    width: 102%;
+    background: #ededee;
+}

@@ -1,0 +1,122 @@
+/* You can add global styles to this file, and also import other style files */
+.orangeBtn {
+
+    color: #fff !important;
+    background-color: #f27d27;
+    border-color: #f27d27;
+    box-shadow: 0 10px 20px -10px #f27d27;
+    border-radius: 13px;
+    padding: 10px 30px;
+    font-size: 16px;
+}
+
+.form-control::-webkit-input-placeholder {
+    font-weight: 300 !important;
+}
+
+.form-control::-moz-placeholder {
+    font-weight: 300 !important;
+}
+
+.form-control::-ms-input-placeholder {
+    font-weight: 300 !important;
+}
+
+.is-invalid .dp-input-container .dp-picker-input {
+
+    border: 1px solid #dc3545 !important;
+
+}
+
+
+dp-date-picker.dp-material .dp-picker-input {
+    border: 1px solid #bfc9d4;
+    color: #3b3f5c;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 10px;
+    letter-spacing: 1px;
+    height: calc(1.4em + 1.4rem + 2px) !important;
+    padding: .75rem 1.25rem;
+    border-radius: 0px;
+    width: 100% !important;
+
+}
+
+.dp-material {
+    width: 100% !important;
+}
+
+.timepicker-dial__control {
+    border: none;
+    background-color: deepskyblue !important;
+}
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.timepicker-overlay {
+    z-index: 10000000 !important;
+}
+
+.timepicker-backdrop-overlay {
+    z-index: 10000000 !important;
+}
+
+.greyText {
+    color: grey;
+}
+
+
+.motoIcon{
+    height: 90px;
+}
+
+.inputStyle{
+    border-radius: 18px 0px 0px 18px!important;
+    border: 1px solid transparent !important;
+    padding: 26px !important;
+    margin-left: auto !important;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.epinglerBtn{
+    border-radius: 18px;
+font-size: 18px;
+background-color: #FFD700!important;
+color: black!important;
+border:0;
+}
+
+.bottomBtn{
+    position: fixed;
+    z-index: 99999;
+    bottom: 0;
+    width: 100%;
+}
+
+.sharePosBtn{
+    background-color: #4EFF3A !important;
+    color: white !important;
+    border-radius: 18px 18px 0px 0px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+
+.ft-14 {
+    font-size: 14px;
+}
+
+.ft-12 {
+    font-size: 12px;
+}
+.ft-10 {
+    font-size: 10px;
+}
+
+.ft-11 {
+    font-size: 11px;
+}

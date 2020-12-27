@@ -1,0 +1,36 @@
+.leftabsolute{
+    position: absolute;
+    left: 15px;
+}
+
+.flex-end{
+    justify-content: flex-end;
+}
+
+.showMore{
+    position: sticky;
+    bottom: 0;
+    text-align: center;
+    background: white;
+    padding: 6px 0px;
+    font-size: 14px;
+    color: #0098a6;
+}
+
+
+.dropdown-item-new {
+    background-color: rgb(239 240 241);
+}
+.moneyIcon{
+    height: 20px;
+    width: 20px;
+}
+
+
+.nbPoints{
+    position: relative;
+    top: 4px;
+    color: #efc558;
+    font-weight: 700;
+    margin-right: 2px;
+}
