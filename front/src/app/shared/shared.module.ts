@@ -6,10 +6,9 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { QRCodeModule } from 'angularx-qrcode';
-import { JobsBadgeStatusComponent } from './jobs-badge-status/jobs-badge-status.component';
 
 @NgModule({
-  declarations: [NavBarComponent, FooterComponent, SideNavComponent, JobsBadgeStatusComponent],
+  declarations: [NavBarComponent, FooterComponent, SideNavComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -26,7 +25,6 @@ import { JobsBadgeStatusComponent } from './jobs-badge-status/jobs-badge-status.
     NavBarComponent,
     FooterComponent,
     SideNavComponent,
-    JobsBadgeStatusComponent
   ]
 })
 export class SharedModule { }

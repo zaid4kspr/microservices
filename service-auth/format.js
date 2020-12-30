@@ -15,7 +15,7 @@ RESPONSE: User Object ==
         _id: "1212102002" // From user object
         name: "ettayeb",
         lastName: "mohamed",
-        email: "mohamed@intigo.tn",
+        email: "mohamed@IF5.tn",
         sexe: 1,
         /* 1: man , 0: women */
         image: birthday: DATE FORMAT,
@@ -25,7 +25,7 @@ RESPONSE: User Object
 
 // LOGIN
 POST / api / v1 / users / login {
-    email: "med@intigo.tn",
+    email: "med@IF5.tn",
     password: "fdfkdk"
 }
 RESPONSE: {
@@ -56,7 +56,7 @@ RESPONSE: user: NEW USER OBJECT
         _id: "1212102002" // From user object
         name: "ettayeb",
         lastName: "mohamed",
-        email: "mohamed@intigo.tn",
+        email: "mohamed@IF5.tn",
         sexe: 1,
         /* 1: man , 0: women */
         image: birthday: DATE FORMAT,

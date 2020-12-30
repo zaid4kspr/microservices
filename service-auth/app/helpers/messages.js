@@ -1,11 +1,11 @@
 const messages = {
-    contact: 'Essayez de nouveau, si le problème persiste contactez-nous directement sur contact@intigo.tn',
+    contact: 'Essayez de nouveau, si le problème persiste contactez-nous directement sur contact@IF5.tn',
     no_phone: "Aucun numéro de téléphone fourni",
     phone_in_use: "Numéro de téléphone déjà associé à un autre compte",
     no_otp_code: "aucun code OTP fourni",
     no_driver_found: "aucun pilote trouvé avec les données fournies",
     no_user_found: "aucun utilisateur trouvé avec les données fournies",
-    admin_will_contact: "Vos données ont été ajoutées avec succès, l'un des administrateurs intiGo vous contactera bientôt.Vos données ont été ajoutées avec succès, l'un des administrateurs intiGo vous contactera bientôt.",
+    admin_will_contact: "Vos données ont été ajoutées avec succès, l'un des administrateurs IF5 vous contactera bientôt.Vos données ont été ajoutées avec succès, l'un des administrateurs IF5 vous contactera bientôt.",
     no_id: "Veuillez fournir un identifiant d'objet",
     social_invalid_id: "votre identifiant social est invalide.",
     otp_sent: "un code OTP a été envoyé sur votre téléphone, veuillez le vérifier",
