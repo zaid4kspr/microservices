@@ -19,16 +19,17 @@ export class MyRouterGuardService implements CanActivate {
       if (!this.auth.isAuthenticated()) {
         this.router.navigate(['/auth/login']);
         resolve(false);
-      }
-
- if (this.auth.credentials.user.userType == "Admin") {
-        this.router.navigate(['/users'])
-        resolve(true);
       } else {
-        resolve(false);
 
+        if (this.auth.credentials.user.userType == "Admin") {
+          this.router.navigate(['/users'])
+          resolve(true);
+        } else {
+          resolve(false);
+
+        }
       }
-      resolve(false);
+
 
     })
 
