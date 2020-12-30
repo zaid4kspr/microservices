@@ -5,8 +5,7 @@
 export const environment = {
   production: false,
   api: {
-    user: 'http://localhost:3300/api/v1',
-  
+    user: 'http://localhost:3300/api/v1', 
     serverUrl: 'http://localhost:3300/api'
 
   },

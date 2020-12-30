@@ -1,5 +1,0 @@
-package com.projectIF5.serviceetudiants.dao;
-
-public interface EtudiantRepository extend JpaRepository<T,ID> {
-
-}

@@ -116,3 +116,13 @@ services:
     links:
       - service-proxy
     restart: always
+    
+  front:
+    build: front
+    ports:
+      - "80:80"
+    volumes:
+      - ./front
+    links:
+      - service-auth
+    restart: always
