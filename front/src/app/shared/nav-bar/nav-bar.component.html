@@ -16,7 +16,7 @@
             </li>
             <li class="nav-item theme-logo">
                 <a [routerLink]="[ '/']">
-                    <img src="assets/img/logo-white.png" class="navbar-logo" alt="logo">
+                    <img src="https://image.spreadshirtmedia.net/image-server/v1/designs/14421647,width=300,height=300/if5-logo.jpg" class="navbar-logo" alt="logo">
                 </a>
             </li>
             <!-- <li class="nav-item theme-text">
@@ -56,191 +56,14 @@
 
 
 
-            <li class="nav-item dropdown notification-dropdown ">
-                <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
-                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                    </svg>
-                    <span class="badge badge-success">{{
-                        notifServ.nbNotif
-                    }}</span>
-                </a>
-                <div class="dropdown-menu position-absolute pb-0" aria-labelledby="notificationDropdown">
-                    <div class="notification-scroll">
-
-                        <div [ngClass]="{'dropdown-item-new ': !item.seen}" class="dropdown-item" *ngFor="let item of notifServ.notifications">
-                            <div class="media" *ngIf="item.jobRequest">
-                                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-heart">
-                                    <path
-                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                                    </path>
-                                </svg> -->
-                                <div class="media-body">
-                                    <div class="notification-para">
-                                        <div class=" font-weight-bold ">
-
-
-                                            <span class="shadow-none  text-primary" *ngIf="item.jobStatus==1">
-                                                {{'NOTIFICATION.STATUS.NEW'| translate}}
-                                            </span>
-
-
-                                            <span [ngClass]="{
-                                                'text-primary': item.jobStatus==1,
-                                                'text-warning': item.jobStatus==2,
-                                                'text-success': item.jobStatus==3 || item.jobStatus==10,
-                                                'text-danger': item.jobStatus== 4 || item.jobStatus== 7|| item.jobStatus== 8|| item.jobStatus== 9|| item.jobStatus== 14|| item.jobStatus== 15|| item.jobStatus== 16,
-                                                'text-info': item.jobStatus==5 || item.jobStatus==6
-                                           
-                                                
-                                        }" translate>
-                                                {{ item.jobRequest.service == 1 ? ' Conciergerie ' :''}}
-                                                {{ item.jobRequest.service == 2 ? 
-                                                    (item.jobRequest.pickUpJob ?  "SIDENAV.DELIVERY" :"PickUp"  ) 
-                                                     :''}}
-                                                {{ item.jobRequest.service == 4 ? "SIDENAV.EXPRESS_DELIVERY" :''}}
-
-
-                                            </span>
-
-
-                                            <span class="shadow-none  text-warning" *ngIf="item.jobStatus==2">
-                                                {{'NOTIFICATION.STATUS.ASSIGNED'| translate}}
-                                            </span>
-                                            <span class="shadow-none  text-success" *ngIf="item.jobStatus==3">
-                                                {{'NOTIFICATION.STATUS.ACCEPTED'| translate}}
-                                            </span>
-                                            <span class="shadow-none  text-danger" *ngIf="item.jobStatus==4">
-                                                {{'NOTIFICATION.STATUS.DECLINED'| translate}}
-                                            </span>
-                                            <span class="shadow-none  text-info" *ngIf="item.jobStatus==5">
-                                                {{'NOTIFICATION.STATUS.STARTED'| translate}}
-                                            </span>
-                                            <span class="shadow-none  text-info " *ngIf="item.jobStatus==6">
-                                                {{'NOTIFICATION.STATUS.FINISHED'| translate}}
-                                            </span>
-                                            <span class="shadow-none  text-danger" *ngIf="item.jobStatus==7">
-                                                {{'NOTIFICATION.STATUS.DECLINED_LAST_MINUTE'| translate}}
-                                            </span>
-                                            <span class="shadow-none  text-danger" *ngIf="item.jobStatus==8">
-                                                {{'NOTIFICATION.STATUS.DECLINED_BY_ADMIN'| translate}}
-                                            </span> <span class="shadow-none  text-danger" *ngIf="item.jobStatus==9">
-                                                {{'NOTIFICATION.STATUS.UNSUCCESSFUL'| translate}}
-                                            </span>
-                                            <span class="shadow-none  text-success" *ngIf="item.jobStatus==10">
-                                                {{'NOTIFICATION.STATUS.PICKED_UP'| translate}}
-                                            </span>
-                                            <span class="shadow-none  text-danger" *ngIf="item.jobStatus==14">
-                                                {{'NOTIFICATION.STATUS.DECLINED_BY_CLIENT'| translate}}
-                                            </span>
-                                            <span class="shadow-none  text-danger" *ngIf="item.jobStatus==15">
-                                                {{'NOTIFICATION.STATUS.DRIVER_FAILED'| translate}} </span>
-                                            <span class="shadow-none  text-danger" *ngIf="item.jobStatus==16">
-                                                Retour définitif </span>
-
-                                        </div>
-                                        <div>
-                                            <span class="greyText ft-14"> {{'CONCIERGERIE.BUSINESS' |translate}}</span>
-                                            <span class="ft-14">
-                                                {{item.jobRequest.business&&item.jobRequest.business.nomCommercial ? item.jobRequest.business.nomCommercial :  item.jobRequest.passingClientName}}</span>
-                                        </div>
-
-                                        <!-- CONCIERGERIE INFO -->
-                                        <div *ngIf="item.jobRequest.service==1">
-                                            <div class="ft-14">
-                                                <span class="greyText ft-14">
-                                                    {{'CONCIERGERIE.ADDRESS' |translate}}
-                                                </span> {{item.jobRequest.pickUp.pickUpAddress}}
-                                            </div>
-                                            <div class="ft-14" *ngIf="item.jobRequest.startDate">
-                                                <span class="greyText ft-14">
-                                                    {{'NOTIFICATION.START_AT' |translate}}
-                                                </span> {{item.jobRequest.startDate | date :'M/d/yy HH:mm ' }}
-                                            </div>
-                                            <div class="ft-14" *ngIf="item.jobRequest.startDate">
-                                                <span class="greyText ft-14">
-                                                    {{'NOTIFICATION.CREATED_AT' |translate}}
-                                                </span> {{item.jobRequest.createdAt | date :'M/d/yy HH:mm ' }}
-                                            </div>
-                                        </div>
-
-
-
-                                        <!-- delivery info -->
-                                        <div *ngIf="item.jobRequest.service==2||item.jobRequest.service==4" class="ft-14 ">
-
-
-                                            <div class="d-flex " *ngIf="item?.jobRequest?.pickUp">
-                                                <div class="greyText ">
-                                                    {{'CONCIERGERIE.FROM' |translate}}
-                                                </div>
-                                                <div class="ml-1 ft-12">
-                                                    {{item?.jobRequest?.pickUp?.pickUpAddress }}
-                                                </div>
-                                            </div>
-                                            <div class="d-flex" *ngIf="item?.jobRequest?.dropOff?.dropOffAddress ">
-                                                <div class="greyText ft-14">
-                                                    {{'CONCIERGERIE.TO' |translate}}
-                                                </div>
-                                                <div class="ml-1 ft-12">
-                                                    {{item?.jobRequest?.dropOff?.dropOffAddress }}
-                                                </div>
-                                            </div>
-                                            <div class="">
-                                                <span class="greyText ">
-                                                    {{'NOTIFICATION.CREATED_AT' |translate}}
-                                                </span> {{item?.jobRequest?.createdAt | date :'M/d/yy HH:mm ' }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showMore" [routerLink]="[ '/notifs' ]">
-                            See More
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </li>
-
+         
             <li class="nav-item dropdown user-profile-dropdown">
                 <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <img src="assets/img/user.png" alt="avatar">
                 </a>
                 <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                     <div class="">
-                        <!-- <div class="dropdown-item">
-                            <a class="" href="user_profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg> My Profile</a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a class="" href="apps_mailbox.html"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox">
-                                    <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
-                                    <path
-                                        d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
-                                    </path>
-                                </svg> Inbox</a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a class="" href="auth_lockscreen.html"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                </svg> Lock Screen</a>
-                        </div> -->
+                      
                         <div class="dropdown-item">
                             <a class="" [routerLink]="[ '/profile' ]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
                                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>

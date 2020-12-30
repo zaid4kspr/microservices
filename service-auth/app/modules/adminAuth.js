@@ -386,8 +386,9 @@ router.post('/admins/reset', async (req, res) => {
 router.post('/services/:service/:model', adminAuth, async (req, res) => {
     try {
         console.log(req.params);
+        let resultat
+
         if (req.params.service) {
-            let resultat
             if (req.params.service == "service-etudiants") {
                 resultat = await axios.post(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""), req.body);
 
@@ -396,7 +397,7 @@ router.post('/services/:service/:model', adminAuth, async (req, res) => {
                 resultat = await axios.post(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""), req.body);
 
             }
-            if (req.params.service == "service-enseignants") {
+            if (req.params.service == "service-enseignant") {
                 resultat = await axios.post(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""), req.body);
 
             }
@@ -405,6 +406,7 @@ router.post('/services/:service/:model', adminAuth, async (req, res) => {
         return res.status(200).json(resultat.data)
     } catch (reason) {
 
+        console.log(reason);
         logger.error("=====================================")
         logger.error(reason)
         logger.error(JSON.stringify(req.body))
@@ -419,21 +421,20 @@ router.post('/services/:service/:model', adminAuth, async (req, res) => {
 router.get('/services/:service/:model', adminAuth, async (req, res) => {
     try {
         console.log(req.params);
+        let resultat
+
         console.log(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + ((req.query.id ? req.query.id : "")));
         if (req.params) {
-            let resultat
             if (req.params.service == "service-etudiants") {
                 resultat = await axios.get(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""));
             }
             if (req.params.service == "service-admins") {
 
                 resultat = await axios.get(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""));
-                console.log(resultat.data);
-                // return res.status(200).json(resultat)
             }
-            if (req.params.service == "service-enseignants") {
+            if (req.params.service == "service-enseignant") {
+                http://localhost:3300/api/v1/services/service-enseignant/enseignants
                 resultat = await axios.get(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""));
-                res.status(200).json(resultat)
             }
 
             return res.status(200).json(resultat.data)
@@ -455,8 +456,8 @@ router.get('/services/:service/:model', adminAuth, async (req, res) => {
 router.delete('/services/:service/:model', adminAuth, async (req, res) => {
     try {
         console.log(req.params);
+        
         if (req.params.service) {
-            let resultat
             if (req.params.service == "service-etudiants") {
                 resultat = await axios.delete(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""));
 
@@ -465,7 +466,7 @@ router.delete('/services/:service/:model', adminAuth, async (req, res) => {
                 resultat = await axios.delete(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""));
 
             }
-            if (req.params.service == "service-enseignants") {
+            if (req.params.service == "service-enseignant") {
                 resultat = await axios.delete(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""));
 
             }
@@ -499,7 +500,7 @@ router.put('/services/:service/:model', adminAuth, async (req, res) => {
                 resultat = await axios.put(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""), req.body);
 
             }
-            if (req.params.service == "service-enseignants") {
+            if (req.params.service == "service-enseignant") {
                 resultat = await axios.put(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""), req.body);
 
             }

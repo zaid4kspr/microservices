@@ -15,17 +15,7 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.activeroute.params
-    //   .subscribe(params => {
-    //     
 
-    //     if (this.authService.credentials.user.userType == "User" && this.router.url == "/") {
-    //       // this.router.navigate(['/business'])
-    //     } else if (this.router.url == "/") {
-    //       this.router.navigate(['/manageConciergerie/list'])
-    //     }
-
-    //   })
   }
 
 

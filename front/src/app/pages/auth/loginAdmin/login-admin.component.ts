@@ -7,7 +7,6 @@ import { LoginService } from "../login.service";
 import { SocialAuthService } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 import { TranslateService } from "@ngx-translate/core";
-import { PushNotificationService } from "../../../shared/push-notification.service";
 
 @Component({
   selector: 'app-login',
@@ -36,7 +35,6 @@ export class LoginAdminComponent implements OnInit {
     private loginService: LoginService,
     private authService: SocialAuthService,
     public translate: TranslateService,
-    public pushNotificationService: PushNotificationService
 
   ) {
     translate.addLangs(['en', 'fr']);
@@ -55,8 +53,7 @@ export class LoginAdminComponent implements OnInit {
 
             if (this.loginBtnClicked) {
               this.authenticationService.setCredentials(d, true);
-              this.pushNotificationService.requestPermission()
-              this.pushNotificationService.getMyNotifications(1)
+             
 
 
               this.router.navigate(['/'])
@@ -105,16 +102,9 @@ export class LoginAdminComponent implements OnInit {
         .loginAdmin(registerBody)
         .then((d) => {
           this.authenticationService.setCredentials(d, true);
-          this.pushNotificationService.requestPermission()
-          this.pushNotificationService.getMyNotifications(1)
-
           this.router.navigate(['/'])
-
-
-
         })
         .catch((e) => {
-
           this.error = e.error.message;
         });
     }

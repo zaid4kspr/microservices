@@ -24,4 +24,6 @@ public class Etudiant {
 	private String firstName;
 	private String lastName;
 	private String classe;
+	private String email;
+	private String tel;
 }

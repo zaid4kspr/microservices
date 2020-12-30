@@ -80,13 +80,7 @@ export class MainProfileComponent implements OnInit {
         tel: this.user.tel
       })
       if (this.user.userType === "User") {
-        this.sharedService.getBusiness(this.user.business).then(resb => {
-        
-          this.businessForm.patchValue(resb)
-          this.apiKey = resb.apiKey;
-          this.id = resb._id;
-
-        })
+    
       }
     })
 
@@ -159,26 +153,11 @@ export class MainProfileComponent implements OnInit {
   updateBusiness() {
     this.submittedBusiness = true
     if (this.businessForm.valid) {
-       this.sharedService.updateBusiness(this.businessForm.value).then(d => {
-        this.submittedBusiness = false
-        this.successBMsg = "Les informations de votre Business ont été mises à jour."
-      }).catch(err => {
-        this.errorBMsg = "Une erreur s'est produite. Veuillez utiliser un autre nom commercial ou contactez-nous."
-        this.submittedBusiness = false
-      })
+    
     }
   }
 
-updateApiKey(){
-
-this.sharedService.updateApiKey(this.id).then(d =>{
-                   this.apiKey = d.apiKey;
-                  this.apiSuccess = "Clé Api régénérée!"
-                  }).catch(d=>{
-                  this.apiError = "Une erreur s'est produite! Merci de nous avoir contactés pour résoudre ce problème!"                  
-                  })
-
-}                  
+               
                   
 
   addressInputChanged(event) {

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from "./../users.service";
+import { UsersService } from "../users.service";
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthServiceZ } from "./../../../authentification/auth-service.service";
-import { SharedService } from "./../../../shared/shared.service";
+import { AuthServiceZ } from "../../../authentification/auth-service.service";
+import { SharedService } from "../../../shared/shared.service";
 declare var $
 @Component({
   selector: 'app-main-users',
-  templateUrl: './main-users.component.html',
-  styleUrls: ['./main-users.component.scss']
+  templateUrl: './enseignant.component.html',
+  styleUrls: ['./enseignant.component.scss']
 })
-export class MainUsersComponent implements OnInit {
+export class EnseignantComponent implements OnInit {
   p = 0
   showCheckBoxes = false
   total = 0
@@ -47,7 +47,7 @@ export class MainUsersComponent implements OnInit {
       tel: ['', [Validators.required, Validators.minLength(8)]],
       lastName: ['', Validators.required],
       firstName: ['', Validators.required],
-      classe: ['', Validators.required],
+      grade: ['', Validators.required],
 
     });
     this.editUserForm = this.fb.group({
@@ -55,7 +55,7 @@ export class MainUsersComponent implements OnInit {
       tel: ['', [Validators.required, Validators.minLength(8)]],
       lastName: ['', Validators.required],
       firstName: ['', Validators.required],
-      classe: ['', Validators.required],
+      grade: ['', Validators.required],
       id: [''],
     });
   }
@@ -63,16 +63,15 @@ export class MainUsersComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.getStudents();
+    this.getallTeacher();
 
   }
 
-  getStudents() {
-    this.usersService.getallUsers().then(d => {
-      console.log(d);
+  getallTeacher() {
+    this.usersService.getallTeacher().then(d => {
 
       this.users = d.
-        _embedded.etudiants.reverse()
+        _embedded.enseignants.reverse()
       this.total = d.page.totalElement
     })
   }
@@ -92,11 +91,7 @@ export class MainUsersComponent implements OnInit {
     $('#editModal').modal('show');
 
 
-    this.usersService.upadateStudent(user.id, this.editUserForm).then(d => {
-      console.log(d);
-      this.getStudents()
-
-    })
+  
 
   }
   addUser() {
@@ -112,8 +107,8 @@ export class MainUsersComponent implements OnInit {
     this.submitted = true
 
     if (this.editUserForm.valid) {
-      this.usersService.upadateStudent(this.editUserForm.controls.id.value, this.editUserForm.value).then(d => {
-        this.getStudents()
+      this.usersService.upadateTeacher(this.editUserForm.controls.id.value, this.editUserForm.value).then(d => {
+        this.getallTeacher()
         this.submitted = false
         $('#editModal').modal('toggle');
         this.successMsg = "Les informations de utilisateur " + this.editUserForm.controls.firstName.value + " ont été mises à jour avec succès."
@@ -140,7 +135,7 @@ export class MainUsersComponent implements OnInit {
     let id = user._links.self.href.split('/').pop();
 
 
-      this.usersService.deleteStudent(id).then(d => {
+      this.usersService.deleteTeacher(id).then(d => {
    
       })
       this.users.splice(i,1)
@@ -151,7 +146,7 @@ export class MainUsersComponent implements OnInit {
   changePage($event) {
     this.p = $event
     this.filterBody.page = $event
-    this.getStudents();
+    this.getallTeacher();
 
   }
 
@@ -167,9 +162,9 @@ export class MainUsersComponent implements OnInit {
     console.log(this.addUserForm.value);
     if (this.addUserForm.valid) {
       let id = 1
-      this.usersService.addStudent(this.addUserForm.value).then(d => {
+      this.usersService.addTeacher(this.addUserForm.value).then(d => {
 
-        this.getStudents()
+        this.getallTeacher()
         $('#addModal').modal('toggle');
 
       })

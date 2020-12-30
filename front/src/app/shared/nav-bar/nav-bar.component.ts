@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AuthServiceZ } from './../../authentification/auth-service.service';
 import { SocialAuthService } from "angularx-social-login";
 import { TranslateService } from '@ngx-translate/core';
-import { PushNotificationService } from "./../push-notification.service";
 import { SharedService } from "./../shared.service";
 declare var $
 @Component({
@@ -19,7 +18,6 @@ export class NavBarComponent implements OnInit {
     private router: Router,
     private authService: SocialAuthService,
     public translate: TranslateService,
-    public notifServ: PushNotificationService,
     public sharedService: SharedService
 
   ) {

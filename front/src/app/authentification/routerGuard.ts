@@ -26,7 +26,7 @@ export class MyRouterGuardService implements CanActivate {
         this.router.navigate(['/business'])
         resolve(true);
       } else if (this.auth.credentials.user.userType == "Admin") {
-        this.router.navigate(['/manageConciergerie/list'])
+        this.router.navigate(['/users'])
         resolve(true);
       } else {
         resolve(false);

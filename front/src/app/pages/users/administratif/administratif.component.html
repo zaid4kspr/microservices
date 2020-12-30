@@ -85,7 +85,7 @@
                                                                     [ngClass]="{ 'is-invalid': submittedAdd && e.email.errors }"
                                                                     type="text" formControlName="email" id="c-name"
                                                                     class="form-control"
-                                                                    placeholder="{{'GENERAL.EMAIL' | translate}}">
+                                                                    placeholder="Email">
                                                                 <span class="validation-text"></span>
                                                                 <small class="text-danger"
                                                                     *ngIf="submittedAdd&& e.email.hasError('required')">
@@ -121,21 +121,7 @@
 
 
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6 text-left">
-                                                            <div class="contact-name">
-                                                                <input
-                                                                    [ngClass]="{ 'is-invalid': submittedAdd && e.firstName.errors }"
-                                                                    type="text" formControlName="classe" id="c-name"
-                                                                    class="form-control" placeholder="Classe">
-                                                                <span class="validation-text"></span>
-                                                                <small class="text-danger"
-                                                                    *ngIf="submittedAdd&&e.classe.hasError('required')">
-                                                                    Ce champ est obligatoire.
-                                                                </small>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                               
 
                                                 </form>
                                             </div>
@@ -207,7 +193,7 @@
                                                                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
                                                                     type="text" formControlName="email" id="c-name"
                                                                     class="form-control"
-                                                                    placeholder="{{'GENERAL.EMAIL' | translate}}">
+                                                                    placeholder="Email">
                                                                 <span class="validation-text"></span>
                                                                 <small class="text-danger"
                                                                     *ngIf="submittedAdd&& f.email.hasError('required')">
@@ -243,21 +229,7 @@
 
 
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6 text-left">
-                                                            <div class="contact-name">
-                                                                <input
-                                                                    [ngClass]="{ 'is-invalid': submittedAdd && f.firstName.errors }"
-                                                                    type="text" formControlName="classe" id="c-name"
-                                                                    class="form-control" placeholder="Classe">
-                                                                <span class="validation-text"></span>
-                                                                <small class="text-danger"
-                                                                    *ngIf="submitted&&f.classe.hasError('required')">
-                                                                    Ce champ est obligatoire.
-                                                                </small>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                               
 
                                                 </form>
                                             </div>
@@ -303,10 +275,7 @@
                                 <h4> Tel</h4>
                             </div>
 
-                            <div class="user-phone col">
-                                <h4> Classe</h4>
-                            </div>
-
+                         
 
                             <div class="action-btn col-1">
 
@@ -342,9 +311,7 @@
                                 <p class="usr-email-addr">{{item?.tel}}</p>
                             </div>
 
-                            <div class="user-phone col">
-                                <p class="usr-email-addr">{{item?.classe}}</p>
-                            </div>
+                        
                             <div class="action-btn col-1 text-center" (click)="openEditModal(item)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

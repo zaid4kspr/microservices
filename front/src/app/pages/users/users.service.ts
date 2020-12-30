@@ -9,16 +9,67 @@ export class UsersService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getallUsers(userType, reqBody): any {
+  getallUsers(): any {
     return this.httpClient
-      .post(environment.api.user + "/filter/users/"+userType, reqBody)
+      .get(environment.api.serverUrl + "/v1/services/service-etudiants/etudiants")
+      .toPromise();
+  } 
+  
+  getallTeacher(): any {
+    return this.httpClient
+      .get(environment.api.serverUrl + "/v1/services/service-enseignant/enseignants")
+      .toPromise();
+  } 
+  getallAdministratif(): any {
+    return this.httpClient
+      .get(environment.api.serverUrl + "/v1/services/service-admins/admins")
+      .toPromise();
+  } 
+   upadateStudent(id,body): any {
+    return this.httpClient
+      .put(environment.api.serverUrl + "/v1/services/service-etudiants/etudiants"+"?id="+id,body)
+      .toPromise();
+  } 
+     upadateTeacher(id,body): any {
+    return this.httpClient
+      .put(environment.api.serverUrl + "/v1/services/service-enseignant/enseignants"+"?id="+id,body)
+      .toPromise();
+  } 
+      upadateAdmin(id,body): any {
+    return this.httpClient
+      .put(environment.api.serverUrl + "/v1/services/service-admins/admins"+"?id="+id,body)
+      .toPromise();
+  } 
+     deleteStudent(id): any {
+    return this.httpClient
+      .delete(environment.api.serverUrl + "/v1/services/service-etudiants/etudiants"+"?id="+id)
+      .toPromise();
+  }  
+      deleteTeacher(id): any {
+    return this.httpClient
+      .delete(environment.api.serverUrl + "/v1/services/service-enseignant/enseignants"+"?id="+id)
+      .toPromise();
+  } 
+     deleteAdmin(id): any {
+    return this.httpClient
+      .delete(environment.api.serverUrl + "/v1/services/service-admins/admins"+"?id="+id)
+      .toPromise();
+  } 
+   addStudent(body): any {
+    return this.httpClient
+      .post(environment.api.serverUrl + "/v1/services/service-etudiants/etudiants",body)
       .toPromise();
   }
-  getAllBusiness(): any {
+  addTeacher(body): any {
     return this.httpClient
-      .get(environment.api.business)
+      .post(environment.api.serverUrl + "/v1/services/service-enseignant/enseignants",body)
+      .toPromise();
+  } addAdmin(body): any {
+    return this.httpClient
+      .post(environment.api.serverUrl + "/v1/services/service-admins/admins",body)
       .toPromise();
   }
+
   sendInvitation(reqBody): any {
     return this.httpClient
       .post(environment.api.user + "/users/invitation", reqBody)

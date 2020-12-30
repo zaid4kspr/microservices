@@ -24,4 +24,6 @@ public class Enseignant {
 	private String firstName;
 	private String lastName;
 	private String grade;
+		private String email;
+	private String tel;
 }

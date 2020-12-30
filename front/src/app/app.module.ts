@@ -19,8 +19,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from "./shared/shared.module";
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireMessagingModule } from '@angular/fire/messaging';
+
 import { environment } from '../environments/environment';
 
 
@@ -55,8 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireMessagingModule
+ 
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true },

@@ -8,8 +8,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SharedModule } from "./../../shared/shared.module";
+import { EnseignantComponent } from "./enseignant/enseignant.component";
+import { AdministratifComponent } from "./administratif/administratif.component";
+
 @NgModule({
-  declarations: [MainUsersComponent],
+  declarations: [MainUsersComponent,EnseignantComponent,AdministratifComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
