@@ -2,8 +2,8 @@ export const environment = {
 
   production: false,
   api: {
-    user: 'http://service-auth:3300/api/v1',  
-    serverUrl: 'http://service-auth:3300/api'
+    user: 'http://127.0.0.1/backend/api/v1',  
+    serverUrl: 'http://127.0.0.1/backend/api'
 
   },
 
