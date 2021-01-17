@@ -123,6 +123,11 @@ services:
       - "80:80"
     volumes:
       - ./front
+    depends_on:
+      service-config:
+        condition: service_healthy
+      service-register:
+        condition: service_healthy    
     links:
       - service-auth
     restart: always
