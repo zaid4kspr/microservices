@@ -1,6 +1,5 @@
 require('dotenv').config();
-const userSigner = process.env.USER_SIGNER;
-const driverSigner = process.env.DRIVER_SIGNER;
+
 const adminSigner = process.env.ADMIN_SIGNER;
 const jwt = require('jsonwebtoken');
 

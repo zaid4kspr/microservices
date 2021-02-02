@@ -1,4 +1,0 @@
-
-spring.cloud.config.server.git.uri=https://github.com/zaid4kspr/cloud-conf.git
-management.endpoints.web.exposure.include=*
-server.port=8888

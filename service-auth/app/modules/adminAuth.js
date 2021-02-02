@@ -433,7 +433,7 @@ router.get('/services/:service/:model', adminAuth, async (req, res) => {
                 resultat = await axios.get(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""));
             }
             if (req.params.service == "service-enseignant") {
-                http://localhost:3300/api/v1/services/service-enseignant/enseignants
+               // http://localhost:3300/api/v1/services/service-enseignant/enseignants
                 resultat = await axios.get(process.env.PROXY_HOST + "/" + req.params.service + "/" + req.params.model + "/" + (req.query.id ? req.query.id : ""));
             }
 
