@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.projectIF5</groupId>
-	<artifactId>service-admins</artifactId>
+	<artifactId>service-livre</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>service-admins</name>
+	<name>service-livre</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -51,7 +51,8 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bootstrap</artifactId>
 		</dependency>
-	<dependency>
+	
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>

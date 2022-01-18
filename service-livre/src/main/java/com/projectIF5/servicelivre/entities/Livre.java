@@ -1,4 +1,4 @@
-package com.projectIF5.serviceetudiants.entities;
+package com.projectIF5.servicelivre.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,13 +17,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Etudiant {
+public class Livre {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String firstName;
-	private String lastName;
-	private String classe;
-	private String tel;
-	private String email;
+	private String name;
+	private String editeur;
+
 }

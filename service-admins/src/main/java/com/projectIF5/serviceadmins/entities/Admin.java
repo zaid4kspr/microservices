@@ -23,5 +23,7 @@ public class Admin {
 	private Long id;
 	
 	private String firstName;
+	private String email;
+	private String tel;
 	private String lastName;
 }
