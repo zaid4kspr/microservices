@@ -1,0 +1,9 @@
+@import './../../../../assets/css/apps/contacts.css';
+@import'./../../../../assets/css/forms/theme-checkbox-radio.css';
+::ng-deep {
+    .ng-select .ng-select-container {
+        height: 43px !important;
+        border-radius: 0 !important;
+    }
+
+}

@@ -1,0 +1,359 @@
+<div class="layout-px-spacing">
+    <div class="row layout-spacing layout-top-spacing" id="cancel-row">
+        <div class="col-lg-12">
+            <div class="widget-content searchable-container list">
+
+                <div class="row">
+
+                    <div class="col-12 text-sm-right text-center layout-spacing align-self-center">
+
+
+
+
+
+                        <div class="d-flex justify-content-sm-end justify-content-center" id="openModal">
+                            <div class="col-md-9 text-center">
+
+                                <div *ngIf="successMsg" class="alert alert-success" role="alert">
+                                    {{successMsg}}
+                                </div>
+                                <div *ngIf="errorPMsg" class="alert alert-warning" role="alert">
+                                    {{errorPMsg}}
+                                </div>
+                            </div>
+
+                            <svg (click)="addUser()" id="btn-add-contact" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="8.5" cy="7" r="4"></circle>
+                                <line x1="20" y1="8" x2="20" y2="14"></line>
+                                <line x1="23" y1="11" x2="17" y2="11"></line>
+                            </svg>
+
+
+                        </div>
+
+
+
+                        <!--  addModal -->
+                        <div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+                            aria-labelledby="addContactModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <i class="flaticon-cancel-12 close" data-dismiss="modal"></i>
+                                        <div class="add-contact-box">
+                                            <div class="add-contact-content">
+                                                <div *ngIf="errorPMsg" class="alert alert-warning text-left"
+                                                    role="alert">
+                                                    {{errorPMsg}}
+                                                </div>
+                                                <form id="addContactModalTitle" [formGroup]="addUserForm">
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <input
+                                                                    [ngClass]="{ 'is-invalid': submittedAdd && e.firstName.errors }"
+                                                                    type="text" formControlName="firstName" id="c-name"
+                                                                    class="form-control" placeholder="first Name">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submittedAdd&&e.firstName.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <input
+                                                                    [ngClass]="{ 'is-invalid': submittedAdd && e.lastName.errors }"
+                                                                    type="text" formControlName="lastName" id="c-name"
+                                                                    class="form-control" placeholder="last Name">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submittedAdd&&e.lastName.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <input
+                                                                    [ngClass]="{ 'is-invalid': submittedAdd && e.email.errors }"
+                                                                    type="text" formControlName="email" id="c-name"
+                                                                    class="form-control"
+                                                                    placeholder="Email">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submittedAdd&& e.email.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submittedAdd&& e.email.hasError('pattern')">
+                                                                    Ce format de champ est incorrect
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+
+                                                            <div class="contact-name">
+                                                                <input pattern="[0-9 ]{8}"
+                                                                    [ngClass]="{ 'is-invalid': submittedAdd && e.tel.errors }"
+                                                                    type="number" formControlName="tel" id="c-name"
+                                                                    class="form-control" placeholder="Tel">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submittedAdd && e.tel.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submittedAdd && e.tel.hasError('pattern')">
+
+                                                                    Ce champ est numerique de longueur 8
+
+                                                                </small>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <input
+                                                                    [ngClass]="{ 'is-invalid': submittedAdd && e.firstName.errors }"
+                                                                    type="text" formControlName="grade" id="c-name"
+                                                                    class="form-control" placeholder="grade">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submittedAdd&&e.grade.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+
+
+                                        <button class="btn" id="closeModal" data-dismiss="modal"> <i
+                                                class="flaticon-delete-1"></i>
+                                            Discard</button>
+
+                                        <button id="btn-add" class="btn" (click)="add()">
+
+                                            Save</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!--  editModal -->
+                        <div class="modal fade" id="editModal" tabindex="-1" role="dialog"
+                            aria-labelledby="addContactModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <i class="flaticon-cancel-12 close" data-dismiss="modal"></i>
+                                        <div class="add-contact-box">
+                                            <div class="add-contact-content">
+                                                <div *ngIf="errorPMsg" class="alert alert-warning text-left"
+                                                    role="alert">
+                                                    {{errorPMsg}}
+                                                </div>
+                                                <form id="addContactModalTitle" [formGroup]="editUserForm">
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <input
+                                                                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                                                                    type="text" formControlName="firstName" id="c-name"
+                                                                    class="form-control" placeholder="first Name">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submitted&&f.firstName.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <input
+                                                                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+                                                                    type="text" formControlName="lastName" id="c-name"
+                                                                    class="form-control" placeholder="last Name">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submitted&&f.lastName.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <input
+                                                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                                                                    type="text" formControlName="email" id="c-name"
+                                                                    class="form-control"
+                                                                    placeholder="Email">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submittedAdd&& f.email.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submitted&& f.email.hasError('pattern')">
+                                                                    Ce format de champ est incorrect
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+
+                                                            <div class="contact-name">
+                                                                <input pattern="[0-9 ]{8}"
+                                                                    [ngClass]="{ 'is-invalid': submitted && f.tel.errors }"
+                                                                    type="number" formControlName="tel" id="c-name"
+                                                                    class="form-control" placeholder="Tel">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submitted && f.tel.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submitted && f.tel.hasError('pattern')">
+
+                                                                    Ce champ est numerique de longueur 8
+
+                                                                </small>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="contact-name">
+                                                                <input
+                                                                    [ngClass]="{ 'is-invalid': submittedAdd && f.firstName.errors }"
+                                                                    type="text" formControlName="grade" id="c-name"
+                                                                    class="form-control" placeholder="Grade">
+                                                                <span class="validation-text"></span>
+                                                                <small class="text-danger"
+                                                                    *ngIf="submitted&&f.grade.hasError('required')">
+                                                                    Ce champ est obligatoire.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+
+
+                                        <button class="btn" id="closeModal" data-dismiss="modal"> <i
+                                                class="flaticon-delete-1"></i>
+                                            Discard</button>
+
+                                        <button id="btn-add" class="btn" (click)="edit()">
+
+                                            Save</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="searchable-items list">
+                    <div class="items items-header-section">
+                        <div class="item-content ">
+                            <div class="col">
+                                <h4>
+                                    Nom
+
+                                </h4>
+                            </div>
+
+                            <div class="user-location col">
+                                <h4> Editeur </h4>
+                            </div>
+
+                       
+                            <div class="action-btn col-1">
+
+                            </div>
+                            <div class="action-btn col-1">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="items" *ngFor="let i=index ;let item of users| paginate: { 
+                    itemsPerPage: 10,
+                    currentPage: p,
+                    totalItems: total }">
+                        <div class="item-content">
+                            <div class="user-profile col">
+
+                                <div class="user-meta-info">
+                                    <p class="usr-location my-1 ml-2">{{item?.name}}</p>
+
+                                </div>
+                            </div>
+                            <div class="user-email col">
+
+                                <p class="usr-email-addr">{{item?.editeur}}</p>
+                            </div>
+                  
+
+                        
+                            <div class="action-btn col-1 text-center" (click)="openEditModal(item)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-edit-2 edit">
+                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                </svg>
+
+
+                            </div>
+
+                            <div class="action-btn col-1 text-center" (click)="delete(item,i)">
+                                <img height="24" src="./../../../../assets/img/delete.svg" alt="">
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col my-4 text-center">
+                            <pagination-controls autoHide="true" (pageChange)="changePage($event)" responsive="true">
+                            </pagination-controls>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

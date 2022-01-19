@@ -1,0 +1,199 @@
+{
+    "PAYMENT": {
+        "TITLE": "Acheter IntiPoints",
+        "DESC": "Les clients intiSend doivent acheter des intiPoints, pour une heure de service de conciergerie, vous avez besoin de 2 points"
+    },
+    "MODALNOFUNDS": {
+        "BUY": "Acheter IntiPoints",
+        "CLOSE": "Fermer"
+    },
+    "CREDIT_TRANSACTION": {
+        "CREDIT": "Crédit",
+        "MADEBY": "Faite par",
+        "BENEFACTOR": "Bienfaiteur",
+        "STATUS": "status",
+        "AMOUNT": "Montant"
+    },
+    "SIDENAV": {
+        "BUSINESS": "Affaires",
+        "CONCIERGERIE": "Conciergerie",
+        "DELIVERY": "Livraison",
+        "PR_DRIVER": "Chauffeur privé",
+        "FAILED_DELIVERY": "Demandes de livraison échoué",
+        "EXPRESS_DELIVERY": "Livraison Express",
+        "PACKING_SLIP": "Bordereau",
+        "CREDIT_TRANSACTION": "transaction de crédit",
+        "REQUESTS": "Demandes"
+    },
+    "NOTIFICATION": {
+        "CLIENT": "Le client",
+        "WANT": "veux réserver un",
+        "WANT_TO_DELIVER": "veux livrer un colis de taille ",
+        "CASH_ON_DELIVERY": "Paiement à la livraison de",
+        "FROM": "de",
+        "TO": "à",
+        "AT": "le",
+        "CREATED_AT": "Créé le",
+        "START_AT": "Commence le",
+        "STATUS": {
+            "PENDING": "En attente",
+            "NEW": "Nouvelle",
+            "ASSIGNED": "Attribuée à un livreur",
+            "ACCEPTED": "Acceptée par le livreur",
+            "DECLINED": "Refusée par le livreur",
+            "STARTED": "Commencée",
+            "FINISHED": "Terminé",
+            "DECLINED_LAST_MINUTE": "Refusé à la dernière minute",
+            "DECLINED_BY_ADMIN": "Refusé par l'administrateur",
+            "UNSUCCESSFUL": "retour au magazin",
+            "DRIVER_FAILED": "Échoué",
+            "EXPIRED": "Expiré",
+            "DECLINED_BY_CLIENT": "Annulée par le partenaire",
+            "PICKED_UP": "Ramassé",
+            "FROM08TO12": "De 08:00 à 12:00",
+            "FROM12TO16": "De 12:00 à 16:00",
+            "FROM16TO20": "De 16:00 à 20:00"
+        }
+    },
+    "GENERAL": {
+        "NAME": "Nom complet de votre client",
+        "EMAIL": "Adresse email de votre client",
+        "FIRST_NAME": "Prénom",
+        "LAST_NAME": "Nom",
+        "DATE": "Date",
+        "TIME": "Heure",
+        "CITY": "Sélectionnez une ville",
+        "DURATION": "Durée",
+        "PHONE": "Téléphone de votre client",
+        "HOUR": "Heure",
+        "EDIT": "Modifier",
+        "CONCIERGERIE_REQUEST": "Demande de conciergerie",
+        "DELIVERY_REQUEST": "Demande de livraison ",
+        "NB_FAILS": "nombre d'échec",
+        "OLD": "Ancien",
+        "NEW": "nouveau",
+        "ADD_INFO": "Information additionnelle",
+        "EXACT_ADDRESS": "Veuillez cocher cette case si vous utilisez la fonctionnalité de saisie semi-automatique pour choisir l'adresse sinon ne la cochez pas s'il vous plaît."
+
+    },
+    "LOGIN": {
+        "TITLE": "CONNECTEZ-VOUS VIA",
+        "OR": "OR",
+        "EMAIL": "Adresse électronique",
+        "PASSWORD": "Mot de passe",
+        "LOGIN_BTN": "S'identifier",
+        "FORGOT_PW": "Mot de passe oublié?",
+        "MSG_REGISTER": "veuillez consulter votre boite mail pour le lien d'activation"
+    },
+    "RESET": {
+        "TITLE": "Récupération de mot de passe",
+        "DESC": "Entrez votre email et les instructions vous seront envoyées!",
+        "RESET_BTN": "Réinitialiser",
+        "PASSWORD_NON_IDENTICAL": "Les mots de passe saisis ne sont pas identiques"
+    },
+    "GROUPS": {
+        "TITLE": "Groupes",
+        "TABLE": {
+            "GROUP_NAME": "Nom de groupe",
+            "GROUP_PARENT": "Groupe parent",
+            "CREATED_BY": "Créé par",
+            "STATUS": "Statut",
+            "APPROVED": "Approved",
+            "SUSPENDED": "Suspended"
+        }
+    },
+    "USERS": {
+        "TITLE": "Utilisateurs",
+        "TABLE": {
+            "USER_NAME": "Nom",
+            "BUSINESS": "Entreprise",
+            "STATUS": "Statut",
+            "APPROVED": "Approved",
+            "SUSPENDED": "Suspended"
+        },
+        "MODAL": {
+            "SELECT_BUSINESS": "Sélectionnez une entreprise"
+        }
+    },
+    "PERMISSIONS": {
+        "TITLE": "Permissions"
+    },
+    "CONCIERGERIE": {
+        "CREATED_BY": "Créé par",
+        "BUSINESS": "Entreprise",
+        "ADDRESS": "Addresse",
+        "FROM": "De",
+        "FROMTO": "De à",
+        "TO": "À",
+        "AT": "À",
+        "FOR": "Pour",
+        "DRIVER": "Chauffeur",
+        "STATUS": "Statut",
+        "SELECT_ADDRESS": "Sélectionnez une adresse",
+        "PICKUP_NAME": "Pick up name",
+        "CLIENT_Name": "Nom du client",
+        "SELECT_VEHICLE": "Sélectionnez un véhicule",
+        "ADD_PICKUP": "Ajouter une nouvelle point de pick up",
+        "SEND_REQUEST": "Envoyer la demande maintenant",
+        "TOTAL_OF": "Total de",
+        "FINISHED_AT": "Terminé à",
+        "DUREE": "Durée",
+        "CUSTOM_RECURRENCE": "Récurrence personnalisée",
+        "DRIVER_DESC": "Si vous travaillez souvent avec un chauffeur veuillez le selectionnez",
+        "RECURRENCE_MODAL": {
+            "TITLE": "Récurrence personnalisée",
+            "START_DAY": "Date de début",
+            "END_DAY": "Date de fin",
+            "TIME": "Heure",
+            "DURATION": "Durée",
+            "REPEAT_ON": "Répéter le",
+            "REPEAT_EVERY": "Répétez chaque"
+        }
+    },
+    "LIVRAISON": {
+        "TITLE": "Livraison",
+        "PACKAGE": "paquet",
+        "SELECT_ADDRESS": "Sélectionnez une adresse",
+        "ADD_PICKUP": "Ajouter une nouvelle point de pick up",
+        "PICKUP_NAME": "Pick up name",
+        "CITY": "Sélectionnez une ville",
+        "SELECT_PAYMENT": "Sélectionnez le statut du paiement",
+        "PAYED": "Payé",
+        "COLLECT": "percevoir le paiement",
+        "AMOUNT": "Montant",
+        "PACKAGE_SIZE": "Taille du paquet",
+        "EXTRA_SMALL": "Super petit",
+        "EXTRA_SMALL_DESC": "Se range dans une enveloppe",
+        "SMALL": "Petit",
+        "SMALL_DESC": "Dans une boîte à chaussures",
+        "MEDIUM": "Moyen",
+        "MEDIUM_DESC": "Dans un sac à dos",
+        "LARGE": "Grand",
+        "LARGE_DESC": "Dans une grande valise",
+        "EXTRA_LARGE": "Extra large",
+        "EXTRA_LARGE_DESC": "Dans un coffre de voiture",
+        "WHEN": "Quand avez-vous besoin d'un coursier?",
+        "FAST": "Rapide",
+        "NEXT_DAY": "Le prochain jour",
+        "ASSIGN": "Attribuer",
+        "SEND_REQUEST": "Envoyer la demande maintenant",
+        "DEAL_WITH": "Traiter la demande de livraison",
+        "TRY_AGAIN": "Réessayer",
+        "RETURN_TO_CLIENT": "Retourner au client",
+        "RETURNING_SHIPMENT": "Expédition de retour",
+        "HISTORY": "Historique",
+        "SAVE": "Sauvgarder",
+        "NEW_ADDRESS_NAME": "Nouvelle adresse",
+        "NEW_ADDRESS_TEXT": "Souhaitez-vous enregistrer cette nouvelle adresse?",
+        "PICKUP_NAME_ERROR": "Veuillez saisir le nom souhaité de votre nouvelle adresse.",
+        "EXACT_ADDRESS": "Est-ce une adresse exacte ?",
+        "EXACT_ADDRESS_HELPER": "Veuillez cocher cette case si vous utilisez la fonctionnalité de saisie semi-automatique pour choisir l'adresse sinon ne la cochez pas s'il vous plaît.",
+        "PICKUP_HELPER": "veuillez utiliser la fonctionnalité de saisie semi-automatique pour informer le chauffeur de l'adresse exacte du ramassage"
+
+    },
+    "PACKING_SLIP": {
+        "PICKUP": "ramassage",
+        "DROP_OFF": "Depôt",
+        "ARGENT_RECU":"Client a reçu son argent"
+    }
+}

@@ -1,0 +1,196 @@
+{
+    "PAYMENT": {
+        "TITLE": "Buy IntiPoints",
+        "DESC": "intiSend Clients have to buy intiPoints, for one hour of conciergerie service you need 2 points"
+    },
+    "MODALNOFUNDS": {
+        "BUY": "Buy IntiPoints",
+        "CLOSE": "Close"
+    },
+    "CREDIT_TRANSACTION": {
+        "CREDIT": "Credit",
+        "MADEBY": "Made by",
+        "BENEFACTOR": "Benefactor",
+        "STATUS": "Status",
+        "AMOUNT": "Amount"
+    },
+    "SIDENAV": {
+        "BUSINESS": "Business",
+        "CONCIERGERIE": "Conciergerie",
+        "DELIVERY": "Delivery",
+        "PR_DRIVER": "Private driver",
+        "FAILED_DELIVERY": "Failed delivery request",
+        "EXPRESS_DELIVERY": "Express Delivery ",
+        "PACKING_SLIP": "Packing slip",
+        "CREDIT_TRANSACTION": "credit transaction",
+        "REQUESTS": "Requests"
+    },
+    "NOTIFICATION": {
+        "CLIENT": "Client",
+        "WANT": "want to book a",
+        "WANT_TO_DELIVER": "want to deliver ",
+        "CASH_ON_DELIVERY": "Cash on delivery",
+        "FROM": "from",
+        "TO": "To",
+        "AT": "At",
+        "CREATED_AT": "Created at",
+        "START_AT": "Start at",
+        "STATUS": {
+            "PENDING": "pending",
+            "NEW": "New",
+            "ASSIGNED": "Assigned to a driver",
+            "ACCEPTED": "Accepted by the driver",
+            "DECLINED": "Declined by the driver",
+            "STARTED": "Started",
+            "FINISHED": "Finished",
+            "DECLINED_LAST_MINUTE": "Declined last minute",
+            "DECLINED_BY_ADMIN": "Canceled by admin",
+            "UNSUCCESSFUL": "retour au magazin",
+            "DRIVER_FAILED": "Failed",
+            "EXPIRED": "Expired",
+            "DECLINED_BY_CLIENT": "Canceled by partner",
+            "PICKED_UP": "Picked up",
+            "FROM08TO12": "De 08:00 à 12:00",
+            "FROM12TO16": "De 12:00 à 16:00",
+            "FROM16TO20": "De 16:00 à 20:00"
+        }
+    },
+    "GENERAL": {
+        "NAME": "Name",
+        "EMAIL": "Email Address",
+        "FIRST_NAME": "First name",
+        "LAST_NAME": "Last name",
+        "DATE": "Date",
+        "TIME": "Time",
+        "DURATION": "Duration",
+        "PHONE": "Phone",
+        "CITY": "Select a city",
+        "CONCIERGERIE_REQUEST": "Conciergerie Request",
+        "DELIVERY_REQUEST": "Delivery Request",
+        "HOUR": "Hour",
+        "EDIT": "Edit",
+        "CREATED_AT": "Created at",
+        "NB_FAILS": "number of failures",
+        "OLD": "Old",
+        "NEW": "New",
+        "ADD_INFO": "Additional information",
+        "EXACT_ADDRESS": "Please check this box if you are using the autocomplete feature to choose the address otherwise please do not check it."
+    },
+    "LOGIN": {
+        "TITLE": "CONNECT VIA",
+        "OR": "OR",
+        "EMAIL": "Email Address",
+        "PASSWORD": "Password",
+        "LOGIN_BTN": "Log In",
+        "FORGOT_PW": "Forgot password?",
+        "MSG_REGISTER": "please check your mailbox for the activation link"
+    },
+    "RESET": {
+        "TITLE": "Password Recovery",
+        "DESC": "Enter your email and instructions will be sent to you!",
+        "RESET_BTN": "Reset",
+        "PASSWORD_NON_IDENTICAL": "Passwords don't appear to match. "
+    },
+    "GROUPS": {
+        "TITLE": "Groups",
+        "TABLE": {
+            "GROUP_NAME": "Group Name",
+            "GROUP_PARENT": "Parent group",
+            "CREATED_BY": "Created By",
+            "STATUS": "Status",
+            "APPROVED": "Approved",
+            "SUSPENDED": "Suspended"
+        }
+    },
+    "USERS": {
+        "TITLE": "Users",
+        "TABLE": {
+            "USER_NAME": "Name",
+            "BUSINESS": "Business",
+            "STATUS": "Status",
+            "APPROVED": "Approved",
+            "SUSPENDED": "Suspended"
+        },
+        "MODAL": {
+            "SELECT_BUSINESS": "Select a business"
+        }
+    },
+    "PERMISSIONS": {
+        "TITLE": "Autorisations"
+    },
+    "CONCIERGERIE": {
+        "CREATED_BY": "Created By",
+        "BUSINESS": "Business",
+        "ADDRESS": "Address",
+        "FROM": "From",
+        "TO": "To",
+        "AT": "At",
+        "FOR ": "For",
+        "DRIVER": "Driver",
+        "STATUS": "Status",
+        "SELECT_ADDRESS": "Select an address",
+        "PICKUP_NAME": "pick up name",
+        "CLIENT_Name": "Client Name",
+        "SELECT_VEHICLE": "Select a vehicle",
+        "ADD_PICKUP": "Add a new pickup point",
+        "SEND_REQUEST": "Send Request Now",
+        "TOTAL_OF": "Total of",
+        "FINISHED_AT": "Finished at",
+        "DUREE": "Duration",
+        "CUSTOM_RECURRENCE": "Custom recurrence",
+        "DRIVER_DESC": "If you often work with a driver please select him",
+        "RECURRENCE_MODAL": {
+            "TITLE": "Custom recurrence",
+            "START_DAY": "Start day",
+            "END_DAY": "End day",
+            "TIME": "Time",
+            "DURATION": "Duration",
+            "REPEAT_ON": "Repeat on",
+            "REPEAT_EVERY": "Repeat every"
+        }
+    },
+    "LIVRAISON": {
+        "TITLE": "Delivery",
+        "PACKAGE": "package",
+        "SELECT_ADDRESS": "Select an address",
+        "ADD_PICKUP": "Add a new pickup point",
+        "PICKUP_NAME": "Pick up name",
+        "SELECT_PAYMENT": "Select Payment Status",
+        "PAYED": "Payed",
+        "COLLECT": "Collect payment",
+        "AMOUNT": "Amount",
+        "PACKAGE_SIZE": "Package size",
+        "EXTRA_SMALL": "Extra-small",
+        "EXTRA_SMALL_DESC": "Fits in an envelope",
+        "SMALL": "Small",
+        "SMALL_DESC": "Fits in a shoe box",
+        "MEDIUM": "Medium",
+        "MEDIUM_DESC": "Fits in a backpack",
+        "LARGE": "Large",
+        "LARGE_DESC": "Fits in a large suitcase",
+        "EXTRA_LARGE": "Extra-large",
+        "EXTRA_LARGE_DESC": "Fits in a car boot",
+        "WHEN": "When do you need a courier ?",
+        "FAST": "Fast",
+        "NEXT_DAY": "Next Day",
+        "ASSIGN": "Assign",
+        "SEND_REQUEST": "Send Request Now",
+        "DEAL_WITH": "process the delivery request",
+        "TRY_AGAIN": "Try again",
+        "RETURN_TO_CLIENT": "Return to client",
+        "RETURNING_SHIPMENT": "Returning shipment",
+        "HISTORY": "History",
+        "SAVE": "Save",
+        "NEW_ADDRESS_NAME": "New address name",
+        "NEW_ADDRESS_TEXT": "Would you like to save this new address?",
+        "PICKUP_NAME_ERROR": "Please enter the desired name of your new address.",
+        "EXACT_ADDRESS": "Is this an exact address?",
+        "EXACT_ADDRESS_HELPER": "Please check this box if you are using the autocomplete feature to choose the address otherwise please do not check it.",
+        "PICKUP_HELPER": " Please use the autocomplete functionality to let the driver know the exact address of the pickup"
+    },
+    "PACKING_SLIP": {
+        "PICKUP": "Pickup",
+        "DROP_OFF": "Drop off",
+        "ARGENT_RECU": "Client received his money"
+    }
+}

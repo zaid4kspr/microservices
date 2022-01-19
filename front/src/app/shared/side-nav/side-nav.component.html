@@ -1,0 +1,45 @@
+<div class="sidebar-wrapper sidebar-theme">
+
+    <nav id="sidebar">
+        <div class="shadow-bottom"></div>
+
+        <ul *ngIf="authService.credentials" class="list-unstyled menu-categories" id="accordionExample">
+
+         
+
+
+       
+
+    
+      
+            <li class="menu" *ngIf="authService.credentials.user.userType=='Admin'">
+                <a href="#adminUsers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+
+                        <span> {{'USERS.TITLE' | translate }}</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse show submenu list-unstyled" id="adminUsers" data-parent="#accordionExample">
+                    <li [ngClass]="{'active': router.url=='/users'}">
+                        <a [routerLink]="[ '/users' ]"> Etudiants </a>
+                    </li>
+                    <li [ngClass]="{'active': router.url.includes('livre')}">
+                        <a [routerLink]="[ '/users/livre' ]"> Livre </a>
+                    </li> <li [ngClass]="{'active': router.url.includes('administratif')}">
+                        <a [routerLink]="[ '/users/administratif' ]"> Administratif </a>
+                    </li>
+                  
+                </ul>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+</div>
